@@ -4,25 +4,25 @@ An Android application for tracking and managing soccer player cards. Point your
 
 ## Features
 
-- **Card Scanning** — Use your device camera to scan soccer player cards in real-time. AI extracts key data: player name, country, card rarity, and more.
-- **Card Collection** — Scanned cards are stored locally in a Room database for browsing and managing your collection.
+-   **Card Scanning** — Use your device camera to scan soccer player cards in real-time. AI extracts key data: player name, country, card rarity, and more.
+-   **Card Collection** — Scanned cards are stored locally in a Room database for browsing and managing your collection.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| UI | Jetpack Compose (latest BOM) |
-| Navigation | Navigation 3 |
-| DI | Hilt |
-| Architecture | MVI |
-| Camera | CameraX |
-| AI/ML | ML Kit GenAI (on-device, targeting Pixel devices with Tensor chips) |
-| Persistence | Room |
+| Layer        | Technology                                                          |
+| ------------ | ------------------------------------------------------------------- |
+| UI           | Jetpack Compose (latest BOM)                                        |
+| Navigation   | Navigation 3                                                        |
+| DI           | Hilt                                                                |
+| Architecture | MVI                                                                 |
+| Camera       | CameraX                                                             |
+| AI/ML        | ML Kit GenAI (on-device, targeting Pixel devices with Tensor chips) |
+| Persistence  | Room                                                                |
 
 ## Requirements
 
-- Android API 26+
-- Pixel device with Google Tensor chip (for ML Kit GenAI features)
+-   Android API 26+
+-   Pixel device with Google Tensor chip (for ML Kit GenAI features)
 
 ## Building
 
