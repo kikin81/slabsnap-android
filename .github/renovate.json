@@ -1,0 +1,24 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "labels": ["dependencies"],
+    "packageRules": [
+        {
+            "matchPackagePatterns": ["org.jetbrains.kotlin.*"],
+            "groupName": "kotlin"
+        },
+        {
+            "matchPackagePatterns": ["com.google.devtools.ksp"],
+            "groupName": "kotlin"
+        },
+        {
+            "matchPackagePatterns": ["androidx.compose.*"],
+            "groupName": "compose"
+        },
+        {
+            "matchManagers": ["gradle"],
+            "matchUpdateTypes": ["minor", "patch"],
+            "automerge": true
+        }
+    ]
+}
