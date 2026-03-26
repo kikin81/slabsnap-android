@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
     jacoco
 }
 
@@ -48,6 +49,12 @@ android {
             }
         }
     }
+}
+
+// TODO: Replace with Firebase App Distribution publish task
+tasks.register("publish") {
+    description = "No-op publish task to satisfy semantic-release verification in CI"
+    group = "publishing"
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
