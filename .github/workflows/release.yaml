@@ -16,5 +16,5 @@ jobs:
     steps:
       - uses: open-turo/actions-jvm/release@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.RELEASE_PAT }}
           checkout-repo: true
