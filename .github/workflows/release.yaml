@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: open-turo/actions-jvm/release@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          checkout-repo: true
