@@ -5,6 +5,7 @@
         "github>open-turo/renovate-config:jvm#v1.14.0"
     ],
     "dependencyDashboard": true,
+    "prHourlyLimit": 0,
     "prConcurrentLimit": 30,
     "labels": ["dependencies"],
     "packageRules": [
