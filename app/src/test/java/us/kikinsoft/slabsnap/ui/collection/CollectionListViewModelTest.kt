@@ -42,12 +42,15 @@ class CollectionListViewModelTest {
         )
 
     @Test
-    fun `shows loading state before repository emits`() = runTest {
+    fun `GIVEN repository has not emitted WHEN viewModel is created THEN state is loading`() = runTest {
+        // Given
         val loadingFlow = MutableSharedFlow<List<StickerEntity>>()
         every { repository.getStickers() } returns loadingFlow
 
+        // When
         val viewModel = createViewModel()
 
+        // Then
         assertTrue(viewModel.uiState.value.isLoading)
 
         loadingFlow.emit(emptyList())
@@ -55,34 +58,43 @@ class CollectionListViewModelTest {
     }
 
     @Test
-    fun `loads stickers on init`() = runTest {
+    fun `GIVEN repository returns stickers WHEN viewModel is created THEN state contains stickers`() = runTest {
+        // Given
         val stickers = listOf(testSticker(), testSticker(id = 2L, stickerCode = "BRA 9"))
         every { repository.getStickers() } returns flowOf(stickers)
 
+        // When
         val viewModel = createViewModel()
 
+        // Then
         assertEquals(stickers, viewModel.uiState.value.stickers)
         assertFalse(viewModel.uiState.value.isLoading)
         assertFalse(viewModel.uiState.value.isEmpty)
     }
 
     @Test
-    fun `empty state when no stickers`() = runTest {
+    fun `GIVEN repository returns empty list WHEN viewModel is created THEN state is empty`() = runTest {
+        // Given
         every { repository.getStickers() } returns flowOf(emptyList())
 
+        // When
         val viewModel = createViewModel()
 
+        // Then
         assertTrue(viewModel.uiState.value.stickers.isEmpty())
         assertFalse(viewModel.uiState.value.isLoading)
         assertTrue(viewModel.uiState.value.isEmpty)
     }
 
     @Test
-    fun `emits error effect when loading fails`() = runTest {
+    fun `GIVEN repository throws WHEN viewModel loads THEN error effect is emitted`() = runTest {
+        // Given
         every { repository.getStickers() } returns flow { throw RuntimeException("DB error") }
 
+        // When
         val viewModel = createViewModel()
 
+        // Then
         viewModel.effects.test {
             val effect = awaitItem()
             assertTrue(effect is CollectionListEffect.ShowError)
@@ -91,25 +103,29 @@ class CollectionListViewModelTest {
     }
 
     @Test
-    fun `delete sticker calls repository`() = runTest {
+    fun `GIVEN a sticker exists WHEN DeleteSticker event is handled THEN repository delete is called`() = runTest {
+        // Given
         val sticker = testSticker()
         every { repository.getStickers() } returns flowOf(listOf(sticker))
         coEvery { repository.deleteSticker(sticker) } returns Unit
-
         val viewModel = createViewModel()
+
+        // When
         viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker))
 
+        // Then
         coVerify { repository.deleteSticker(sticker) }
     }
 
     @Test
-    fun `delete sticker emits error on failure`() = runTest {
+    fun `GIVEN delete will fail WHEN DeleteSticker event is handled THEN error effect is emitted`() = runTest {
+        // Given
         val sticker = testSticker()
         every { repository.getStickers() } returns flowOf(listOf(sticker))
         coEvery { repository.deleteSticker(sticker) } throws RuntimeException("Delete failed")
-
         val viewModel = createViewModel()
 
+        // When / Then
         viewModel.effects.test {
             viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker))
             val effect = awaitItem()
@@ -119,11 +135,12 @@ class CollectionListViewModelTest {
     }
 
     @Test
-    fun `navigate to scanner emits effect`() = runTest {
+    fun `GIVEN viewModel exists WHEN NavigateToScanner event is handled THEN navigation effect is emitted`() = runTest {
+        // Given
         every { repository.getStickers() } returns flowOf(emptyList())
-
         val viewModel = createViewModel()
 
+        // When / Then
         viewModel.effects.test {
             viewModel.handleEvent(CollectionListEvent.NavigateToScanner)
             assertEquals(CollectionListEffect.NavigateToScanner, awaitItem())
