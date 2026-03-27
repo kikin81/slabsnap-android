@@ -88,7 +88,7 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         )
 
     val debugTree =
-        fileTree("${layout.buildDirectory.get()}/tmp/kotlin-classes/debug") {
+        fileTree("${layout.buildDirectory.get()}/intermediates/built_in_kotlinc/debug/compileDebugKotlin/classes") {
             exclude(fileFilter)
         }
 
