@@ -50,6 +50,7 @@ android {
 
     testOptions {
         unitTests.all {
+            it.useJUnitPlatform()
             it.extensions.configure<JacocoTaskExtension> {
                 isIncludeNoLocationClasses = true
                 excludes = listOf("jdk.internal.*")
@@ -121,7 +122,12 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     lintChecks(libs.compose.lint.checks)
-    testImplementation(libs.junit)
+    testImplementation(platform(libs.junit5.bom))
+    testImplementation(libs.junit5.jupiter)
+    testRuntimeOnly(libs.junit5.platform.launcher)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
