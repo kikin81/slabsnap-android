@@ -29,7 +29,7 @@ spotless {
             )
             .customRuleSets(
                 listOf(
-                    "io.nlopez.compose.rules:ktlint:0.4.25",
+                    "io.nlopez.compose.rules:ktlint:0.5.6",
                 ),
             )
     }
