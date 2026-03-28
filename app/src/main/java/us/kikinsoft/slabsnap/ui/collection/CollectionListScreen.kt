@@ -8,7 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun CollectionListScreen(onNavigateToScanner: () -> Unit, modifier: Modifier = Modifier) {
+fun CollectionListScreen(
+    onNavigateToScanner: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,

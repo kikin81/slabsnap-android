@@ -30,16 +30,19 @@ class CollectionListViewModelTest {
 
     private fun createViewModel(): CollectionListViewModel = CollectionListViewModel(repository)
 
-    private fun testSticker(id: Long = 1L, stickerCode: String = "ARG 10", playerName: String = "Lionel Messi") =
-        StickerEntity(
-            id = id,
-            stickerCode = stickerCode,
-            playerName = playerName,
-            teamName = "Argentina",
-            metadata = emptyMap(),
-            collectionSetId = 1L,
-            isOwned = true,
-        )
+    private fun testSticker(
+        id: Long = 1L,
+        stickerCode: String = "ARG 10",
+        playerName: String = "Lionel Messi",
+    ) = StickerEntity(
+        id = id,
+        stickerCode = stickerCode,
+        playerName = playerName,
+        teamName = "Argentina",
+        metadata = emptyMap(),
+        collectionSetId = 1L,
+        isOwned = true,
+    )
 
     @Test
     fun `GIVEN repository has not emitted WHEN viewModel is created THEN state is loading`() = runTest {

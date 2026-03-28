@@ -5,8 +5,10 @@ import us.kikinsoft.slabsnap.ui.mvi.UiEffect
 import us.kikinsoft.slabsnap.ui.mvi.UiEvent
 import us.kikinsoft.slabsnap.ui.mvi.UiState
 
-data class CollectionListState(val stickers: List<StickerEntity> = emptyList(), val isLoading: Boolean = true) :
-    UiState {
+data class CollectionListState(
+    val stickers: List<StickerEntity> = emptyList(),
+    val isLoading: Boolean = true,
+) : UiState {
     val isEmpty: Boolean get() = !isLoading && stickers.isEmpty()
 }
 
