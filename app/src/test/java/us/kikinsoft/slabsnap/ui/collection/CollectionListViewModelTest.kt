@@ -70,7 +70,11 @@ class CollectionListViewModelTest {
         val viewModel = createViewModel()
 
         // Then
-        assertEquals(stickers, viewModel.uiState.value.stickers)
+        val uiModels = viewModel.uiState.value.stickers
+        assertEquals(2, uiModels.size)
+        assertEquals("ARG 10", uiModels[0].stickerCode)
+        assertEquals("Lionel Messi", uiModels[0].playerName)
+        assertEquals("BRA 9", uiModels[1].stickerCode)
         assertFalse(viewModel.uiState.value.isLoading)
         assertFalse(viewModel.uiState.value.isEmpty)
     }
@@ -110,14 +114,14 @@ class CollectionListViewModelTest {
         // Given
         val sticker = testSticker()
         every { repository.getStickers() } returns flowOf(listOf(sticker))
-        coEvery { repository.deleteSticker(sticker) } returns Unit
+        coEvery { repository.deleteStickerById(sticker.id) } returns Unit
         val viewModel = createViewModel()
 
         // When
-        viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker))
+        viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker.id))
 
         // Then
-        coVerify { repository.deleteSticker(sticker) }
+        coVerify { repository.deleteStickerById(sticker.id) }
     }
 
     @Test
@@ -125,12 +129,12 @@ class CollectionListViewModelTest {
         // Given
         val sticker = testSticker()
         every { repository.getStickers() } returns flowOf(listOf(sticker))
-        coEvery { repository.deleteSticker(sticker) } throws RuntimeException("Delete failed")
+        coEvery { repository.deleteStickerById(sticker.id) } throws RuntimeException("Delete failed")
         val viewModel = createViewModel()
 
         // When / Then
         viewModel.effects.test {
-            viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker))
+            viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker.id))
             val effect = awaitItem()
             assertTrue(effect is CollectionListEffect.ShowError)
             assertEquals("Delete failed", (effect as CollectionListEffect.ShowError).message)

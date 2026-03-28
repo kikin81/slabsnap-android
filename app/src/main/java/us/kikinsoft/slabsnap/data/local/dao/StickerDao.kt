@@ -31,4 +31,7 @@ interface StickerDao {
 
     @Delete
     suspend fun delete(sticker: StickerEntity)
+
+    @Query("DELETE FROM stickers WHERE id = :id")
+    suspend fun deleteById(id: Long)
 }

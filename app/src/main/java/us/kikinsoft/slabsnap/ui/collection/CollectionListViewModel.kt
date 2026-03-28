@@ -3,11 +3,12 @@ package us.kikinsoft.slabsnap.ui.collection
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import us.kikinsoft.slabsnap.data.local.entity.StickerEntity
 import us.kikinsoft.slabsnap.domain.repository.StickerRepository
 import us.kikinsoft.slabsnap.ui.mvi.MviViewModel
 
@@ -23,7 +24,7 @@ class CollectionListViewModel @Inject constructor(private val stickerRepository:
     override fun handleEvent(event: CollectionListEvent) {
         when (event) {
             is CollectionListEvent.LoadStickers -> loadStickers()
-            is CollectionListEvent.DeleteSticker -> deleteSticker(event.sticker)
+            is CollectionListEvent.DeleteSticker -> deleteSticker(event.stickerId)
             is CollectionListEvent.NavigateToScanner -> sendEffect(CollectionListEffect.NavigateToScanner)
         }
     }
@@ -31,6 +32,16 @@ class CollectionListViewModel @Inject constructor(private val stickerRepository:
     private fun loadStickers() {
         stickerRepository
             .getStickers()
+            .map { entities ->
+                entities.map { entity ->
+                    StickerUiModel(
+                        id = entity.id,
+                        stickerCode = entity.stickerCode,
+                        playerName = entity.playerName,
+                        teamName = entity.teamName,
+                    )
+                }.toImmutableList()
+            }
             .onEach { stickers ->
                 setState { copy(stickers = stickers, isLoading = false) }
             }
@@ -41,10 +52,10 @@ class CollectionListViewModel @Inject constructor(private val stickerRepository:
             .launchIn(viewModelScope)
     }
 
-    private fun deleteSticker(sticker: StickerEntity) {
+    private fun deleteSticker(stickerId: Long) {
         viewModelScope.launch {
             try {
-                stickerRepository.deleteSticker(sticker)
+                stickerRepository.deleteStickerById(stickerId)
             } catch (e: Exception) {
                 sendEffect(CollectionListEffect.ShowError(e.message ?: "Failed to delete sticker"))
             }

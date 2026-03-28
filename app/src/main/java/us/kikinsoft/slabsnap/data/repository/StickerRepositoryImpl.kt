@@ -17,4 +17,6 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
     override suspend fun updateSticker(sticker: StickerEntity) = stickerDao.update(sticker)
 
     override suspend fun deleteSticker(sticker: StickerEntity) = stickerDao.delete(sticker)
+
+    override suspend fun deleteStickerById(id: Long) = stickerDao.deleteById(id)
 }
