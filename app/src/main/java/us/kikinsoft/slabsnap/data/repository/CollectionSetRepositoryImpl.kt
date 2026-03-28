@@ -1,10 +1,10 @@
 package us.kikinsoft.slabsnap.data.repository
 
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import us.kikinsoft.slabsnap.data.local.dao.CollectionSetDao
 import us.kikinsoft.slabsnap.data.local.entity.CollectionSetEntity
 import us.kikinsoft.slabsnap.domain.repository.CollectionSetRepository
-import javax.inject.Inject
 
 class CollectionSetRepositoryImpl @Inject constructor(private val collectionSetDao: CollectionSetDao) :
     CollectionSetRepository {

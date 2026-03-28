@@ -8,7 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun LiveScannerScreen(onNavigateBack: () -> Unit, modifier: Modifier = Modifier) {
+fun LiveScannerScreen(
+    onNavigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
