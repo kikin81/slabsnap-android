@@ -13,4 +13,6 @@ interface StickerRepository {
     suspend fun updateSticker(sticker: StickerEntity)
 
     suspend fun deleteSticker(sticker: StickerEntity)
+
+    suspend fun deleteStickerById(id: Long)
 }
