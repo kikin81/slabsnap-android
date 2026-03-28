@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "skills": {
+        "modern-jetpack-compose": {
+            "source": "anhvt52/jetpack-compose-skills",
+            "sourceType": "github",
+            "computedHash": "7ab67c0306af2cf3b53301e965da013b0a171a7eb38cbd84a5bc182d07bc0255"
+        }
+    }
+}
