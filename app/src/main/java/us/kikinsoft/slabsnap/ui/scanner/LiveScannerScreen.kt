@@ -13,7 +13,10 @@ import us.kikinsoft.slabsnap.R
 import us.kikinsoft.slabsnap.ui.theme.SlabSnapTheme
 
 @Composable
-fun LiveScannerScreen(onNavigateBack: () -> Unit, modifier: Modifier = Modifier) {
+fun LiveScannerScreen(
+    onNavigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     BackHandler(onBack = onNavigateBack)
 
     Box(

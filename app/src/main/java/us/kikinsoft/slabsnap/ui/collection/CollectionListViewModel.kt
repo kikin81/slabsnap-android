@@ -2,6 +2,7 @@ package us.kikinsoft.slabsnap.ui.collection
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
@@ -10,7 +11,6 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import us.kikinsoft.slabsnap.domain.repository.StickerRepository
 import us.kikinsoft.slabsnap.ui.mvi.MviViewModel
-import javax.inject.Inject
 
 @HiltViewModel
 class CollectionListViewModel @Inject constructor(private val stickerRepository: StickerRepository) :

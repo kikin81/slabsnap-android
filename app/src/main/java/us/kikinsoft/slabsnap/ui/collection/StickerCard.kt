@@ -15,7 +15,10 @@ import androidx.compose.ui.unit.dp
 import us.kikinsoft.slabsnap.ui.theme.SlabSnapTheme
 
 @Composable
-fun StickerCard(sticker: StickerUiModel, modifier: Modifier = Modifier) {
+fun StickerCard(
+    sticker: StickerUiModel,
+    modifier: Modifier = Modifier,
+) {
     Card(
         modifier = modifier.fillMaxWidth(),
     ) {

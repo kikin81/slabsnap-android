@@ -1,10 +1,10 @@
 package us.kikinsoft.slabsnap.data.repository
 
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import us.kikinsoft.slabsnap.data.local.dao.StickerDao
 import us.kikinsoft.slabsnap.data.local.entity.StickerEntity
 import us.kikinsoft.slabsnap.domain.repository.StickerRepository
-import javax.inject.Inject
 
 class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerDao) : StickerRepository {
     override fun getStickers(): Flow<List<StickerEntity>> = stickerDao.getAll()

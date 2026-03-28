@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -44,11 +45,12 @@ fun CollectionListScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
+    val currentOnNavigateToScanner by rememberUpdatedState(onNavigateToScanner)
 
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
-                is CollectionListEffect.NavigateToScanner -> onNavigateToScanner()
+                is CollectionListEffect.NavigateToScanner -> currentOnNavigateToScanner()
                 is CollectionListEffect.ShowError -> snackbarHostState.showSnackbar(effect.message)
             }
         }
@@ -127,7 +129,10 @@ private fun EmptyState(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun StickerGrid(stickers: ImmutableList<StickerUiModel>, modifier: Modifier = Modifier) {
+private fun StickerGrid(
+    stickers: ImmutableList<StickerUiModel>,
+    modifier: Modifier = Modifier,
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier.fillMaxSize(),

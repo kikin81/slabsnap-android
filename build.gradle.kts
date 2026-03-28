@@ -14,9 +14,22 @@ spotless {
         target("**/*.kt")
         targetExclude("**/build/**")
         ktlint(libs.versions.ktlint.get())
+            .setEditorConfigPath("$projectDir/.editorconfig")
             .editorConfigOverride(
                 mapOf(
+                    "ktlint_code_style" to "android_studio",
                     "ktlint_standard_function-naming" to "disabled",
+                    "ktlint_standard_trailing-comma-on-call-site" to "enabled",
+                    "ktlint_standard_trailing-comma-on-declaration-site" to "enabled",
+                    "ij_kotlin_allow_trailing_comma" to "true",
+                    "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                    "ktlint_function_signature_rule_force_multiline_when_parameter_count_greater_or_equal_than" to "2",
+                    "ktlint_class_signature_rule_force_multiline_when_parameter_count_greater_or_equal_than" to "2",
+                ),
+            )
+            .customRuleSets(
+                listOf(
+                    "io.nlopez.compose.rules:ktlint:0.4.25",
                 ),
             )
     }
@@ -24,5 +37,14 @@ spotless {
         target("**/*.kts")
         targetExclude("**/build/**")
         ktlint(libs.versions.ktlint.get())
+            .editorConfigOverride(
+                mapOf(
+                    "ktlint_code_style" to "android_studio",
+                    "ktlint_standard_trailing-comma-on-call-site" to "enabled",
+                    "ktlint_standard_trailing-comma-on-declaration-site" to "enabled",
+                    "ij_kotlin_allow_trailing_comma" to "true",
+                    "ij_kotlin_allow_trailing_comma_on_call_site" to "true",
+                ),
+            )
     }
 }
