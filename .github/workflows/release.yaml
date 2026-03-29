@@ -13,8 +13,33 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    outputs:
+      new-release-published: ${{ steps.release.outputs.new-release-published }}
     steps:
-      - uses: open-turo/actions-jvm/release@v2
+      - id: release
+        uses: open-turo/actions-jvm/release@v2
         with:
           github-token: ${{ secrets.RELEASE_PAT }}
           checkout-repo: true
+
+  distribute:
+    name: Distribute Debug APK
+    needs: release
+    if: needs.release.outputs.new-release-published == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+
+      - name: Decode service account key
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 -d > /tmp/firebase-sa-key.json
+
+      - name: Build and distribute
+        run: ./gradlew assembleDebug appDistributionUploadDebug
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/firebase-sa-key.json

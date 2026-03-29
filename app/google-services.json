@@ -1,0 +1,29 @@
+{
+    "project_info": {
+        "project_number": "412342085298",
+        "project_id": "slab-snap",
+        "storage_bucket": "slab-snap.firebasestorage.app"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:412342085298:android:fb248c2fe8fc5eac31cbab",
+                "android_client_info": {
+                    "package_name": "us.kikinsoft.slabsnap"
+                }
+            },
+            "oauth_client": [],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyC6MvwOPmq90Iqdd1TETSh0fD5BQzZPmjw"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": []
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
