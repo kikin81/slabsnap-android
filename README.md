@@ -70,6 +70,4 @@ Debug APKs are distributed to testers via Firebase App Distribution on every new
 
 ## Status
 
-**Current version:** 1.9.0
-
 The project has core infrastructure in place: Room database with collection/sticker entities, MVI architecture, Hilt DI, Firebase integration, CI/CD pipeline with automated distribution, and R8-optimized release builds. Active development on scanning and collection management features.
