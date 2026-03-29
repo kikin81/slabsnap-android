@@ -20,3 +20,4 @@ local.properties
 .dolt/
 *.db
 .beads-credential-key
+.idea/markdown.xml
