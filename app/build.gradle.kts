@@ -54,6 +54,7 @@ android {
         targetCompatibility = JavaVersion.toVersion(jvmTarget)
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 
