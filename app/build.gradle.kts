@@ -48,9 +48,10 @@ android {
             )
         }
     }
+    val jvmTarget = project.property("slabsnap.jvmTarget").toString().toInt()
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(jvmTarget)
+        targetCompatibility = JavaVersion.toVersion(jvmTarget)
     }
     buildFeatures {
         compose = true
