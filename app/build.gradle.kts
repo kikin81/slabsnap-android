@@ -68,7 +68,6 @@ android {
     }
 }
 
-// TODO: Replace with Firebase App Distribution publish task
 tasks.register("publish") {
     description = "No-op publish task to satisfy semantic-release verification in CI"
     group = "publishing"
@@ -129,7 +128,7 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    implementation(libs.firebase.anlaytics)
+    implementation(libs.firebase.analytics)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.collections.immutable)
