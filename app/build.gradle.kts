@@ -56,10 +56,6 @@ android {
         compose = true
     }
 
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
-
     testOptions {
         unitTests.all {
             it.useJUnitPlatform()
@@ -69,6 +65,10 @@ android {
             }
         }
     }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 tasks.register("publish") {
