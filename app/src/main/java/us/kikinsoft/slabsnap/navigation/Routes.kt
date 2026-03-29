@@ -1,9 +1,10 @@
 package us.kikinsoft.slabsnap.navigation
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object CollectionListRoute
+data object CollectionListRoute : NavKey
 
 @Serializable
-data object LiveScannerRoute
+data object LiveScannerRoute : NavKey
