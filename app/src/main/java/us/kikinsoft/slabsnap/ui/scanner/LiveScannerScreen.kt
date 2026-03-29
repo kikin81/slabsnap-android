@@ -83,6 +83,9 @@ fun LiveScannerScreen(
         onCameraError = { message ->
             viewModel.handleEvent(LiveScannerEvent.OnCameraError(message))
         },
+        onCardStabilize = { bitmap ->
+            viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
+        },
         snackbarHostState = snackbarHostState,
         modifier = modifier,
     )
@@ -93,6 +96,7 @@ private fun LiveScannerScreenContent(
     state: LiveScannerState,
     onGrantPermission: () -> Unit,
     onCameraError: (String) -> Unit,
+    onCardStabilize: (android.graphics.Bitmap) -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
@@ -103,6 +107,7 @@ private fun LiveScannerScreenContent(
         if (state.hasCameraPermission) {
             CameraPreview(
                 onError = onCameraError,
+                onCardStabilize = onCardStabilize,
                 modifier = Modifier.padding(innerPadding),
             )
         } else {
@@ -132,6 +137,7 @@ private fun LiveScannerPermissionPreview() {
             state = LiveScannerState(hasCameraPermission = false),
             onGrantPermission = {},
             onCameraError = {},
+            onCardStabilize = {},
         )
     }
 }

@@ -26,6 +26,9 @@ class LiveScannerViewModel @Inject constructor() :
             is LiveScannerEvent.OnCameraError -> {
                 sendEffect(LiveScannerEffect.ShowError(event.message))
             }
+            is LiveScannerEvent.OnStabilityReached -> {
+                setState { copy(isStable = true) }
+            }
         }
     }
 }

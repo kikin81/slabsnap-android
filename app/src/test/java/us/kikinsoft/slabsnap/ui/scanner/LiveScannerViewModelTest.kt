@@ -1,6 +1,8 @@
 package us.kikinsoft.slabsnap.ui.scanner
 
+import android.graphics.Bitmap
 import app.cash.turbine.test
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
@@ -80,5 +82,18 @@ class LiveScannerViewModelTest {
             assertTrue(effect is LiveScannerEffect.ShowError)
             assertEquals("Camera bind failed", (effect as LiveScannerEffect.ShowError).message)
         }
+    }
+
+    @Test
+    fun `GIVEN viewModel exists WHEN OnStabilityReached event THEN state isStable is true`() {
+        // Given
+        val viewModel = createViewModel()
+        val bitmap = mockk<Bitmap>()
+
+        // When
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
+
+        // Then
+        assertTrue(viewModel.uiState.value.isStable)
     }
 }
