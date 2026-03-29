@@ -2,6 +2,12 @@
 
 This project uses **bd** (beads) for issue tracking. Run `bd onboard` to get started.
 
+**See CLAUDE.md for detailed tech stack, architecture patterns, and conventions.**
+
+## Project Context
+
+SlabSnap is a Kotlin/Android app using Jetpack Compose and MVI architecture. The codebase is organized around clear data/domain/ui layers with Hilt for DI.
+
 ## Quick Reference
 
 ```bash
@@ -12,6 +18,35 @@ bd close <id>         # Complete work
 bd sync               # Sync with git
 ```
 
+## Build & Test Commands
+
+```bash
+./gradlew assembleDebug        # Build debug APK
+./gradlew test                  # Run unit tests (JUnit5 with mockk)
+./gradlew connectedAndroidTest  # Run instrumented tests
+./gradlew spotlessCheck         # Check code formatting
+./gradlew spotlessApply         # Auto-fix formatting
+```
+
+## Codebase Essentials
+
+**Directory Structure:**
+
+-   `data/` — Room entities, DAOs, repository implementations, local converters
+-   `domain/` — Repository interfaces (abstract service boundaries)
+-   `ui/` — Compose screens, ViewModels, theme; organized by feature
+-   `di/` — Hilt modules (Database, Repository, App-level bindings)
+-   `navigation/` — Navigation 3 routes and NavHost setup
+
+**MVI Pattern & Testing:**
+
+-   UI emits `*Event` sealed interfaces → `*ViewModel` (extends `MviViewModel<State, Event, Effect>`) processes via `setState()` reducer
+-   State flows as `StateFlow<*State>` where `*State` implements `UiState` marker
+-   Effects are one-shot via `Channel<*Effect>` for side effects (navigation, toasts)
+-   Unit tests use `turbine` to collect state/effect flows; mock repositories via mockk; use JUnit5 `@Test`
+-   Instrumented tests use Hilt's `@HiltAndroidTest` + `HiltTestRunner` custom test runner
+-   Test ViewModels with `MainDispatcherExtension` to control coroutine dispatchers
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
@@ -19,7 +54,11 @@ bd sync               # Sync with git
 **MANDATORY WORKFLOW:**
 
 1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
+2. **Run quality gates** (if code changed):
+    ```bash
+    ./gradlew spotlessCheck  # Must pass code formatting checks
+    ./gradlew test           # Run unit tests — all must pass
+    ```
 3. **Update issue status** - Close finished work, update in-progress items
 4. **PUSH TO REMOTE** - This is MANDATORY:
     ```bash
@@ -67,12 +106,16 @@ bd close <id>         # Complete work
 **MANDATORY WORKFLOW:**
 
 1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
+2. **Run quality gates** (if code changed):
+    ```bash
+    ./gradlew spotlessCheck  # Must pass code formatting checks
+    ./gradlew test           # Run unit tests — all must pass
+    ```
 3. **Update issue status** - Close finished work, update in-progress items
 4. **PUSH TO REMOTE** - This is MANDATORY:
     ```bash
     git pull --rebase
-    bd dolt push
+    bd sync
     git push
     git status  # MUST show "up to date with origin"
     ```
