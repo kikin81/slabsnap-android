@@ -143,6 +143,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.collections.immutable)
     implementation(libs.kotlinx.serialization.core)
+    implementation(libs.mlkit.objectdetection)
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)

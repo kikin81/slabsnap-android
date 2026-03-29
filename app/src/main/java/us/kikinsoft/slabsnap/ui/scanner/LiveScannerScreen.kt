@@ -2,6 +2,7 @@ package us.kikinsoft.slabsnap.ui.scanner
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -83,6 +84,9 @@ fun LiveScannerScreen(
         onCameraError = { message ->
             viewModel.handleEvent(LiveScannerEvent.OnCameraError(message))
         },
+        onCardStabilize = { bitmap ->
+            viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
+        },
         snackbarHostState = snackbarHostState,
         modifier = modifier,
     )
@@ -93,6 +97,7 @@ private fun LiveScannerScreenContent(
     state: LiveScannerState,
     onGrantPermission: () -> Unit,
     onCameraError: (String) -> Unit,
+    onCardStabilize: (Bitmap) -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
@@ -103,6 +108,7 @@ private fun LiveScannerScreenContent(
         if (state.hasCameraPermission) {
             CameraPreview(
                 onError = onCameraError,
+                onCardStabilize = onCardStabilize,
                 modifier = Modifier.padding(innerPadding),
             )
         } else {
@@ -132,6 +138,7 @@ private fun LiveScannerPermissionPreview() {
             state = LiveScannerState(hasCameraPermission = false),
             onGrantPermission = {},
             onCameraError = {},
+            onCardStabilize = {},
         )
     }
 }
