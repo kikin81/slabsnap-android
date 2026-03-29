@@ -10,12 +10,12 @@
 
 ## Manual Setup (developer)
 
--   [ ] Create "internal-testers" group in Firebase Console
+-   [x] Create "internal-testers" group in Firebase Console
 -   [x] Create GCP service account with App Distribution Admin role
 -   [x] Generate JSON key and add as `FIREBASE_SERVICE_ACCOUNT` GitHub Secret (base64-encoded)
 -   [ ] Restrict API key in GCP Console (Android package name + SHA-1)
 
 ## Validation
 
--   [ ] Trigger a release and confirm APK appears in Firebase App Distribution console
--   [ ] Confirm tester receives notification via Firebase App Tester app
+-   [x] Trigger a release and confirm APK appears in Firebase App Distribution console
+-   [x] Confirm tester receives notification via Firebase App Tester app
