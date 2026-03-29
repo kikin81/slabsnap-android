@@ -40,6 +40,8 @@ import kotlin.math.abs
  *
  * @param onCardDetected called on each frame where a card is detected, with its bounding [Rect],
  *   the image dimensions, and rotation degrees — needed for coordinate mapping to UI space.
+ * @param onCardLost called when no object is detected in the current frame — useful for clearing
+ *   the overlay.
  * @param onStabilityReached called once the card has been held steady, with a [Bitmap] of the
  *   stable frame. Resets internally to avoid double-triggering.
  */

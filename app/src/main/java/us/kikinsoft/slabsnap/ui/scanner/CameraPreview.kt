@@ -68,9 +68,7 @@ fun CameraPreview(
                 }
             },
             onCardLost = { detectedBox = null },
-            onStabilityReached = { bitmap ->
-                currentOnCardStabilize(bitmap)
-            },
+            onStabilityReached = { currentOnCardStabilize(it) },
         )
     }
 
@@ -134,13 +132,7 @@ fun CameraPreview(
 /**
  * Maps a bounding box from ML Kit image-buffer coordinates to [PreviewView] UI coordinates.
  *
- * ML Kit's [InputImage.fromMediaImage] applies the rotation, so the bounding box is already
- * in the rotated coordinate system. The source dimensions are the [ImageProxy]'s raw
- * width/height — we swap them here for 90/270 degree rotations.
- *
- * [PreviewView] uses FILL_CENTER by default: the image is scaled to fill the view (using
- * `max(scaleX, scaleY)`) and centered, which may crop edges. We replicate that math to
- * map the bounding box correctly.
+ * Delegates to [mapToViewCoordinates] for the pure math, then wraps the result in a [RectF].
  */
 private fun mapToViewCoordinates(
     imageRect: Rect,
@@ -150,6 +142,52 @@ private fun mapToViewCoordinates(
     viewWidth: Float,
     viewHeight: Float,
 ): RectF {
+    val mapped = mapToViewCoordinates(
+        rectLeft = imageRect.left.toFloat(),
+        rectTop = imageRect.top.toFloat(),
+        rectRight = imageRect.right.toFloat(),
+        rectBottom = imageRect.bottom.toFloat(),
+        imageWidth = imageWidth,
+        imageHeight = imageHeight,
+        rotationDegrees = rotationDegrees,
+        viewWidth = viewWidth,
+        viewHeight = viewHeight,
+    )
+    return RectF(mapped.left, mapped.top, mapped.right, mapped.bottom)
+}
+
+/**
+ * Result of mapping a bounding box to view coordinates.
+ */
+internal data class MappedRect(
+    val left: Float,
+    val top: Float,
+    val right: Float,
+    val bottom: Float,
+)
+
+/**
+ * Pure-math coordinate transform from ML Kit image-buffer space to view space.
+ *
+ * ML Kit's [InputImage.fromMediaImage] applies the rotation, so the bounding box is already
+ * in the rotated coordinate system. The source dimensions are the ImageProxy's raw
+ * width/height — we swap them here for 90/270 degree rotations.
+ *
+ * PreviewView uses FILL_CENTER by default: the image is scaled to fill the view (using
+ * `max(scaleX, scaleY)`) and centered, which may crop edges. We replicate that math to
+ * map the bounding box correctly.
+ */
+internal fun mapToViewCoordinates(
+    rectLeft: Float,
+    rectTop: Float,
+    rectRight: Float,
+    rectBottom: Float,
+    imageWidth: Int,
+    imageHeight: Int,
+    rotationDegrees: Int,
+    viewWidth: Float,
+    viewHeight: Float,
+): MappedRect {
     // InputImage applies rotation, so source dims must account for the swap
     val isRotated = rotationDegrees == 90 || rotationDegrees == 270
     val sourceW = if (isRotated) imageHeight.toFloat() else imageWidth.toFloat()
@@ -160,10 +198,10 @@ private fun mapToViewCoordinates(
     val dx = (viewWidth - sourceW * scale) / 2f
     val dy = (viewHeight - sourceH * scale) / 2f
 
-    return RectF(
-        imageRect.left * scale + dx,
-        imageRect.top * scale + dy,
-        imageRect.right * scale + dx,
-        imageRect.bottom * scale + dy,
+    return MappedRect(
+        left = rectLeft * scale + dx,
+        top = rectTop * scale + dy,
+        right = rectRight * scale + dx,
+        bottom = rectBottom * scale + dy,
     )
 }

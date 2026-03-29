@@ -2,6 +2,7 @@ package us.kikinsoft.slabsnap.ui.scanner
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -96,7 +97,7 @@ private fun LiveScannerScreenContent(
     state: LiveScannerState,
     onGrantPermission: () -> Unit,
     onCameraError: (String) -> Unit,
-    onCardStabilize: (android.graphics.Bitmap) -> Unit,
+    onCardStabilize: (Bitmap) -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {

@@ -37,5 +37,5 @@
 ## 7. Verification
 
 -   [x] 7.1 `./gradlew spotlessCheck compileDebugKotlin` passes
--   [ ] 7.2 On-device: point camera at a card — green overlay tracks the card
--   [ ] 7.3 Hold card steady ~400ms — stability state updates (verify via log or debugger)
+-   [x] 7.2 On-device: point camera at a card — green overlay tracks the card
+-   [x] 7.3 Hold card steady ~400ms — stability state updates (verify via log or debugger)
