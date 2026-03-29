@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new-release-published: ${{ steps.release.outputs.new-release-published }}
+      new-release-version: ${{ steps.release.outputs.new-release-version }}
     steps:
       - id: release
         uses: open-turo/actions-jvm/release@v2
@@ -43,3 +44,4 @@ jobs:
         run: ./gradlew assembleDebug appDistributionUploadDebug
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/firebase-sa-key.json
+          APP_DISTRIBUTION_RELEASE_NOTES: "v${{ needs.release.outputs.new-release-version }} — ${{ github.sha }}"

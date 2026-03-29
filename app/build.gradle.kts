@@ -34,6 +34,7 @@ android {
         debug {
             firebaseAppDistribution {
                 groups = "internal-testers"
+                releaseNotes = System.getenv("APP_DISTRIBUTION_RELEASE_NOTES") ?: ""
             }
         }
         release {
