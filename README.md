@@ -1,5 +1,8 @@
 # SlabSnap
 
+[![CI](https://github.com/kikin81/slabsnap-android/actions/workflows/ci.yaml/badge.svg)](https://github.com/kikin81/slabsnap-android/actions/workflows/ci.yaml)
+[![Release](https://img.shields.io/github/v/release/kikin81/slabsnap-android)](https://github.com/kikin81/slabsnap-android/releases/latest)
+
 An Android application for tracking and managing soccer player cards. Point your camera at a card, and SlabSnap uses on-device AI to extract player details automatically.
 
 ## Features
