@@ -1,6 +1,7 @@
 package us.kikinsoft.slabsnap.ui.scanner
 
 import android.graphics.Bitmap
+import us.kikinsoft.slabsnap.data.mlkit.ExtractedCardData
 import us.kikinsoft.slabsnap.ui.mvi.UiEffect
 import us.kikinsoft.slabsnap.ui.mvi.UiEvent
 import us.kikinsoft.slabsnap.ui.mvi.UiState
@@ -9,6 +10,9 @@ data class LiveScannerState(
     val hasCameraPermission: Boolean = false,
     val isPermissionDeniedGlobally: Boolean = false,
     val isStable: Boolean = false,
+    val isExtracting: Boolean = false,
+    val isDownloadingModel: Boolean = false,
+    val extractedData: ExtractedCardData? = null,
 ) : UiState
 
 sealed interface LiveScannerEvent : UiEvent {
@@ -20,10 +24,14 @@ sealed interface LiveScannerEvent : UiEvent {
     data class OnCameraError(val message: String) : LiveScannerEvent
 
     data class OnStabilityReached(val bitmap: Bitmap) : LiveScannerEvent
+
+    data object ResetExtraction : LiveScannerEvent
 }
 
 sealed interface LiveScannerEffect : UiEffect {
     data object RequestCameraPermission : LiveScannerEffect
 
     data class ShowError(val message: String) : LiveScannerEffect
+
+    data class ExtractionSuccess(val data: ExtractedCardData) : LiveScannerEffect
 }

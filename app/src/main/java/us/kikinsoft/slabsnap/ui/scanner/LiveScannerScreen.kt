@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -68,6 +71,15 @@ fun LiveScannerScreen(
                 is LiveScannerEffect.ShowError -> {
                     snackbarHostState.showSnackbar(effect.message)
                 }
+                is LiveScannerEffect.ExtractionSuccess -> {
+                    snackbarHostState.showSnackbar(
+                        context.getString(
+                            R.string.scanner_extraction_found,
+                            effect.data.playerName,
+                            effect.data.stickerNumber,
+                        ),
+                    )
+                }
             }
         }
     }
@@ -106,11 +118,22 @@ private fun LiveScannerScreenContent(
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
         if (state.hasCameraPermission) {
-            CameraPreview(
-                onError = onCameraError,
-                onCardStabilize = onCardStabilize,
-                modifier = Modifier.padding(innerPadding),
-            )
+            Box(modifier = Modifier.padding(innerPadding)) {
+                CameraPreview(
+                    onError = onCameraError,
+                    onCardStabilize = onCardStabilize,
+                    modifier = Modifier.fillMaxSize(),
+                )
+                if (state.isDownloadingModel || state.isExtracting) {
+                    ScannerOverlay(
+                        message = if (state.isDownloadingModel) {
+                            stringResource(R.string.scanner_downloading_model)
+                        } else {
+                            stringResource(R.string.scanner_extracting)
+                        },
+                    )
+                }
+            }
         } else {
             Box(
                 modifier = Modifier
@@ -130,6 +153,29 @@ private fun LiveScannerScreenContent(
     }
 }
 
+@Composable
+private fun ScannerOverlay(
+    message: String,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f)),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = message,
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodyLarge,
+            )
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun LiveScannerPermissionPreview() {
@@ -140,5 +186,21 @@ private fun LiveScannerPermissionPreview() {
             onCameraError = {},
             onCardStabilize = {},
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ScannerOverlayExtractingPreview() {
+    SlabSnapTheme {
+        ScannerOverlay(message = "Analyzing card data\u2026")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ScannerOverlayDownloadingPreview() {
+    SlabSnapTheme {
+        ScannerOverlay(message = "Downloading AI model (one-time setup)\u2026")
     }
 }
