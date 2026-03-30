@@ -54,7 +54,8 @@ class CardDataExtractor @Inject constructor() {
     }
 
     /**
-     * Sends the captured card [bitmap] to Gemini Nano and returns structured [ExtractedCardData].
+     * Sends the captured front-side card [bitmap] to Gemini Nano and returns structured
+     * [ExtractedCardData] containing visible text and border color.
      *
      * @throws ExtractionException if the model returns unparseable output.
      * @throws Exception if inference fails at the platform level.
@@ -81,24 +82,51 @@ class CardDataExtractor @Inject constructor() {
         }
     }
 
+    /**
+     * Extracts the alphanumeric sticker code from the back of a card (e.g. "ARG 2", "FWC 9").
+     *
+     * @return the sticker code string, or throws if extraction fails.
+     */
+    suspend fun extractBackCode(bitmap: Bitmap): String {
+        val request = generateContentRequest(
+            ImagePart(bitmap),
+            TextPart(BACK_CODE_PROMPT),
+        ) {
+            temperature = 0.0f
+            topK = 10
+            maxOutputTokens = 64
+        }
+
+        val response: GenerateContentResponse = generativeModel.generateContent(request)
+
+        return response.candidates.firstOrNull()?.text?.trim()
+            ?: throw ExtractionException("Model returned empty response for back code")
+    }
+
     companion object {
         private val EXTRACTION_PROMPT = """
-            You are an automated, highly precise optical data extraction system for Panini soccer sticker cards.
+            You are an automated, highly precise optical data extraction system for Panini soccer sticker cards. You are looking at the FRONT side of a sticker.
 
             Extract the following fields from the card image:
-            - player_name: The full name of the athlete printed on the card.
-            - team_country: The national team or club name represented on the card.
-            - sticker_number: The alphanumeric serial code (e.g. "ENG 14", "FRA 02", "23").
+            - primary_text: The main name or text visible on the card (e.g. player name, team name, stadium name). This is the most prominent text.
+            - badge_text: Any text on a crest, badge, or emblem if present (e.g. national federation name). If none, use "UNKNOWN".
+            - border_color: The color of the border framing the sticker. Common values: White, Blue, Red, Purple, Green, Black. Default to "White" if unsure.
             - is_foil: true if the card has holographic, shiny, or foil elements; false otherwise.
 
             Rules:
             - Do not output any text outside of the JSON object.
-            - If a value is obscured, illegible, or not present, output the exact string "UNKNOWN".
-            - The sticker serial number is typically in a corner or along the bottom margin.
-            - The team name is usually accompanied by a national flag or crest.
+            - If a text value is obscured, illegible, or not present, output the exact string "UNKNOWN".
+            - Do NOT attempt to guess the sticker number. It is NOT on this side of the card.
+            - The border color refers to the decorative frame around the sticker image, not the card background.
 
             Respond with only a JSON object containing exactly these four keys:
-            {"player_name": "", "team_country": "", "sticker_number": "", "is_foil": false}
+            {"primary_text": "", "badge_text": "", "border_color": "White", "is_foil": false}
+        """.trimIndent()
+
+        private val BACK_CODE_PROMPT = """
+            Extract the short alphanumeric sticker code from the top-left area of this card back image. The code consists of a 2-3 letter country/category abbreviation followed by a space and a number (e.g. "ARG 2", "MAR 1", "FWC 9", "GER 2", "USA 16").
+
+            Return ONLY the code string, nothing else. No JSON, no explanation.
         """.trimIndent()
     }
 }

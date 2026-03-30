@@ -13,6 +13,8 @@ data class LiveScannerState(
     val isExtracting: Boolean = false,
     val isDownloadingModel: Boolean = false,
     val extractedData: ExtractedCardData? = null,
+    val needsBackScan: Boolean = false,
+    val pendingBorderColor: String? = null,
 ) : UiState
 
 sealed interface LiveScannerEvent : UiEvent {
@@ -33,5 +35,11 @@ sealed interface LiveScannerEffect : UiEffect {
 
     data class ShowError(val message: String) : LiveScannerEffect
 
-    data class ExtractionSuccess(val data: ExtractedCardData) : LiveScannerEffect
+    data class ShowFlipCard(val borderColor: String) : LiveScannerEffect
+
+    data class ResolutionSuccess(
+        val playerName: String,
+        val stickerCode: String,
+        val borderColor: String,
+    ) : LiveScannerEffect
 }

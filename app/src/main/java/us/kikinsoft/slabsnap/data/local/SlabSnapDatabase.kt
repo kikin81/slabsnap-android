@@ -11,7 +11,7 @@ import us.kikinsoft.slabsnap.data.local.entity.StickerEntity
 
 @Database(
     entities = [StickerEntity::class, CollectionSetEntity::class],
-    version = 1,
+    version = 2,
 )
 @TypeConverters(Converters::class)
 abstract class SlabSnapDatabase : RoomDatabase() {

@@ -9,5 +9,7 @@
     <string name="scanner_camera_error_fallback">Camera failed to start</string>
     <string name="scanner_extracting">Analyzing card data…</string>
     <string name="scanner_downloading_model">Downloading AI model (one-time setup)…</string>
-    <string name="scanner_extraction_found">Found: %1$s (%2$s)</string>
+    <string name="scanner_flip_card">Flip the card to scan the back</string>
+    <string name="scanner_scan_back">Scan the back of the sticker</string>
+    <string name="scanner_resolution_success">Found: %1$s (%2$s) — %3$s</string>
 </resources>

@@ -19,4 +19,33 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
     override suspend fun deleteSticker(sticker: StickerEntity) = stickerDao.delete(sticker)
 
     override suspend fun deleteStickerById(id: Long) = stickerDao.deleteById(id)
+
+    override suspend fun findBaseStickerByText(
+        setId: Long,
+        query: String,
+    ): StickerEntity? = stickerDao.findBaseStickerByText(setId, query)
+
+    override suspend fun insertParallelVariant(
+        baseStickerCode: String,
+        collectionSetId: Long,
+        borderColor: String,
+    ): Long {
+        val baseSticker = stickerDao.getByStickerCode(baseStickerCode)
+            ?: throw IllegalArgumentException("Base sticker not found: $baseStickerCode")
+
+        return if (borderColor == "White") {
+            stickerDao.update(baseSticker.copy(isOwned = true, updatedAt = System.currentTimeMillis()))
+            baseSticker.id
+        } else {
+            stickerDao.insert(
+                baseSticker.copy(
+                    id = 0,
+                    borderColor = borderColor,
+                    isOwned = true,
+                    createdAt = System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis(),
+                ),
+            )
+        }
+    }
 }

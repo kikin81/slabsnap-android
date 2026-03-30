@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -46,6 +47,7 @@ fun LiveScannerScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
+    val resources = context.resources
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
@@ -71,12 +73,18 @@ fun LiveScannerScreen(
                 is LiveScannerEffect.ShowError -> {
                     snackbarHostState.showSnackbar(effect.message)
                 }
-                is LiveScannerEffect.ExtractionSuccess -> {
+                is LiveScannerEffect.ShowFlipCard -> {
                     snackbarHostState.showSnackbar(
-                        context.getString(
-                            R.string.scanner_extraction_found,
-                            effect.data.playerName,
-                            effect.data.stickerNumber,
+                        resources.getString(R.string.scanner_flip_card),
+                    )
+                }
+                is LiveScannerEffect.ResolutionSuccess -> {
+                    snackbarHostState.showSnackbar(
+                        resources.getString(
+                            R.string.scanner_resolution_success,
+                            effect.playerName,
+                            effect.stickerCode,
+                            effect.borderColor,
                         ),
                     )
                 }
@@ -133,6 +141,11 @@ private fun LiveScannerScreenContent(
                         },
                     )
                 }
+                if (state.needsBackScan && !state.isExtracting) {
+                    ScannerInstructionOverlay(
+                        message = stringResource(R.string.scanner_scan_back),
+                    )
+                }
             }
         } else {
             Box(
@@ -161,7 +174,8 @@ private fun ScannerOverlay(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f)),
+            .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f))
+            .semantics(mergeDescendants = true) {},
         contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -173,6 +187,25 @@ private fun ScannerOverlay(
                 style = MaterialTheme.typography.bodyLarge,
             )
         }
+    }
+}
+
+@Composable
+private fun ScannerInstructionOverlay(
+    message: String,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f)),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = message,
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.bodyLarge,
+        )
     }
 }
 
@@ -202,5 +235,13 @@ private fun ScannerOverlayExtractingPreview() {
 private fun ScannerOverlayDownloadingPreview() {
     SlabSnapTheme {
         ScannerOverlay(message = "Downloading AI model (one-time setup)\u2026")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ScannerBackScanInstructionPreview() {
+    SlabSnapTheme {
+        ScannerInstructionOverlay(message = "Scan the back of the sticker")
     }
 }

@@ -7,13 +7,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
 import us.kikinsoft.slabsnap.data.mlkit.CardDataExtractor
+import us.kikinsoft.slabsnap.domain.repository.StickerRepository
 import us.kikinsoft.slabsnap.ui.mvi.MviViewModel
 
 @HiltViewModel
-class LiveScannerViewModel @Inject constructor(private val cardDataExtractor: CardDataExtractor) :
-    MviViewModel<LiveScannerState, LiveScannerEvent, LiveScannerEffect>(
-        LiveScannerState(),
-    ) {
+class LiveScannerViewModel @Inject constructor(
+    private val cardDataExtractor: CardDataExtractor,
+    private val stickerRepository: StickerRepository,
+) : MviViewModel<LiveScannerState, LiveScannerEvent, LiveScannerEffect>(
+    LiveScannerState(),
+) {
 
     override fun handleEvent(event: LiveScannerEvent) {
         when (event) {
@@ -33,7 +36,11 @@ class LiveScannerViewModel @Inject constructor(private val cardDataExtractor: Ca
             }
             is LiveScannerEvent.OnStabilityReached -> {
                 setState { copy(isStable = true) }
-                extractCardData(event.bitmap)
+                if (uiState.value.needsBackScan) {
+                    extractBackCode(event.bitmap)
+                } else {
+                    extractCardData(event.bitmap)
+                }
             }
             is LiveScannerEvent.ResetExtraction -> {
                 setState {
@@ -42,6 +49,8 @@ class LiveScannerViewModel @Inject constructor(private val cardDataExtractor: Ca
                         isExtracting = false,
                         isDownloadingModel = false,
                         extractedData = null,
+                        needsBackScan = false,
+                        pendingBorderColor = null,
                     )
                 }
             }
@@ -57,7 +66,33 @@ class LiveScannerViewModel @Inject constructor(private val cardDataExtractor: Ca
                 setState { copy(isExtracting = true) }
                 val data = cardDataExtractor.extract(bitmap)
                 setState { copy(isExtracting = false, extractedData = data) }
-                sendEffect(LiveScannerEffect.ExtractionSuccess(data))
+
+                if (data.primaryText == "UNKNOWN" && data.badgeText == "UNKNOWN") {
+                    transitionToBackScan(data.borderColor)
+                    return@launch
+                }
+
+                val searchText = if (data.primaryText != "UNKNOWN") data.primaryText else data.badgeText
+                // TODO: collectionSetId should come from user selection; using 1L as placeholder
+                val baseSticker = stickerRepository.findBaseStickerByText(1L, searchText)
+
+                if (baseSticker != null) {
+                    stickerRepository.insertParallelVariant(
+                        baseStickerCode = baseSticker.stickerCode,
+                        collectionSetId = baseSticker.collectionSetId,
+                        borderColor = data.borderColor,
+                    )
+                    clearPendingState()
+                    sendEffect(
+                        LiveScannerEffect.ResolutionSuccess(
+                            playerName = baseSticker.playerName,
+                            stickerCode = baseSticker.stickerCode,
+                            borderColor = data.borderColor,
+                        ),
+                    )
+                } else {
+                    transitionToBackScan(data.borderColor)
+                }
             } catch (e: Exception) {
                 setState { copy(isExtracting = false, isDownloadingModel = false) }
                 sendEffect(
@@ -66,6 +101,63 @@ class LiveScannerViewModel @Inject constructor(private val cardDataExtractor: Ca
                     ),
                 )
             }
+        }
+    }
+
+    private fun extractBackCode(bitmap: Bitmap) {
+        if (uiState.value.isExtracting) return
+
+        viewModelScope.launch {
+            try {
+                ensureModelAvailable()
+                setState { copy(isExtracting = true) }
+                val stickerCode = cardDataExtractor.extractBackCode(bitmap)
+                val borderColor = uiState.value.pendingBorderColor ?: "White"
+
+                // TODO: collectionSetId should come from user selection; using 1L as placeholder
+                stickerRepository.insertParallelVariant(
+                    baseStickerCode = stickerCode,
+                    collectionSetId = 1L,
+                    borderColor = borderColor,
+                )
+
+                setState { copy(isExtracting = false) }
+                clearPendingState()
+                sendEffect(
+                    LiveScannerEffect.ResolutionSuccess(
+                        playerName = stickerCode,
+                        stickerCode = stickerCode,
+                        borderColor = borderColor,
+                    ),
+                )
+            } catch (e: Exception) {
+                setState { copy(isExtracting = false) }
+                sendEffect(
+                    LiveScannerEffect.ShowError(
+                        e.message ?: "Failed to read sticker code",
+                    ),
+                )
+            }
+        }
+    }
+
+    private fun transitionToBackScan(borderColor: String) {
+        setState {
+            copy(
+                needsBackScan = true,
+                pendingBorderColor = borderColor,
+                isStable = false,
+            )
+        }
+        sendEffect(LiveScannerEffect.ShowFlipCard(borderColor))
+    }
+
+    private fun clearPendingState() {
+        setState {
+            copy(
+                needsBackScan = false,
+                pendingBorderColor = null,
+            )
         }
     }
 

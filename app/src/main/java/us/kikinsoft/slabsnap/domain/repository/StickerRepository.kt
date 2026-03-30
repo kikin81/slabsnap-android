@@ -15,4 +15,15 @@ interface StickerRepository {
     suspend fun deleteSticker(sticker: StickerEntity)
 
     suspend fun deleteStickerById(id: Long)
+
+    suspend fun findBaseStickerByText(
+        setId: Long,
+        query: String,
+    ): StickerEntity?
+
+    suspend fun insertParallelVariant(
+        baseStickerCode: String,
+        collectionSetId: Long,
+        borderColor: String,
+    ): Long
 }

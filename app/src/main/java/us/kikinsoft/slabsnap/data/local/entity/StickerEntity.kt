@@ -8,8 +8,10 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "stickers",
     indices = [
-        Index("stickerCode"),
-        Index("collectionSetId"),
+        Index(
+            value = ["collectionSetId", "stickerCode", "borderColor"],
+            unique = true,
+        ),
     ],
     foreignKeys = [
         ForeignKey(
@@ -27,6 +29,7 @@ data class StickerEntity(
     val teamName: String,
     val metadata: Map<String, String>,
     val collectionSetId: Long,
+    val borderColor: String = "White",
     val isOwned: Boolean = false,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis(),
