@@ -28,7 +28,7 @@ firebaseAppDistribution = "5.2.1"
 sortDependencies = "0.16"
 cameraX = "1.6.0"
 mlkitObjectDetection = "17.0.2"
-mlkitGenaiPrompt = "1.0.0-beta1"
+mlkitGenaiPrompt = "1.0.0-beta2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
