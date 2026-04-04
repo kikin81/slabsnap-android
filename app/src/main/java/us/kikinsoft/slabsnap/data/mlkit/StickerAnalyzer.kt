@@ -69,8 +69,26 @@ class StickerAnalyzer(
     private var lastBoundingBox: Rect? = null
     private var stableFrameCount = 0
 
+    /**
+     * When `true`, the analyzer drops every frame without processing.
+     * Set to `true` internally the instant stability is reached (self-pausing),
+     * and reset to `false` externally via [resume] when the UI is ready for the next scan.
+     */
+    var isPaused: Boolean = false
+        private set
+
+    /** Re-enables frame processing after the analyzer has self-paused. */
+    fun resume() {
+        isPaused = false
+    }
+
     @OptIn(ExperimentalGetImage::class)
     override fun analyze(imageProxy: ImageProxy) {
+        if (isPaused) {
+            imageProxy.close()
+            return
+        }
+
         val mediaImage = imageProxy.image
         if (mediaImage == null) {
             imageProxy.close()
@@ -112,6 +130,7 @@ class StickerAnalyzer(
             stableFrameCount++
 
             if (stableFrameCount >= STABILITY_THRESHOLD_FRAMES) {
+                isPaused = true
                 val bitmap = imageProxy.toBitmap()
                 onStabilityReached(bitmap)
 

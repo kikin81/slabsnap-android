@@ -12,4 +12,11 @@
     <string name="scanner_flip_card">Flip the card to scan the back</string>
     <string name="scanner_scan_back">Scan the back of the sticker</string>
     <string name="scanner_resolution_success">Found: %1$s (%2$s) — %3$s</string>
+    <string name="scanner_save_and_scan_next">Save &amp; Scan Next</string>
+    <string name="scanner_try_again">Try Again</string>
+    <string name="scanner_scan_back_action">Scan Back</string>
+    <string name="scanner_error_title">Something went wrong</string>
+    <string name="scanner_result_title">Card Found</string>
+    <string name="scanner_result_player">%1$s — %2$s</string>
+    <string name="scanner_result_variant">%1$s variant</string>
 </resources>
