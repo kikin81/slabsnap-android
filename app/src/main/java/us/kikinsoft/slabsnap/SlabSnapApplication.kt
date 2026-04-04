@@ -16,10 +16,8 @@ class SlabSnapApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            CoroutineScope(Dispatchers.IO).launch {
-                databaseSeeder.seedIfEmpty()
-            }
+        CoroutineScope(Dispatchers.IO).launch {
+            databaseSeeder.seedIfEmpty()
         }
     }
 }

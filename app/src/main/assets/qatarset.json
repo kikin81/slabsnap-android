@@ -1,0 +1,4022 @@
+[
+    {
+        "stickerCode": "00",
+        "playerName": "Panini",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC1",
+        "playerName": "FIFA",
+        "teamName": "Content",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC2",
+        "playerName": "Official Trophy",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC3",
+        "playerName": "Official Trophy",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC4",
+        "playerName": "Official Mascot",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC5",
+        "playerName": "Official Mascot",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC6",
+        "playerName": "Official Emblem",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC7",
+        "playerName": "Official Emblem",
+        "teamName": "Content",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC8",
+        "playerName": "Ahmad Bin Ali Stadium",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC9",
+        "playerName": "Al Janoub Stadium",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC10",
+        "playerName": "Al Thumama Stadium",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC11",
+        "playerName": "Education City Stadium",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC12",
+        "playerName": "Khalifa International Stadium",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC13",
+        "playerName": "Stadium 974",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC14",
+        "playerName": "Al Bayt Stadium outdoor",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC15",
+        "playerName": "Al Bayt Stadium indoor",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC16",
+        "playerName": "Lusail Stadium outdoor",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC17",
+        "playerName": "Lusail Stadium indoor",
+        "teamName": "Stadiums",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC18",
+        "playerName": "Al Rihla",
+        "teamName": "Official Match Ball",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT1",
+        "playerName": "Team Shot",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT2",
+        "playerName": "Team Logo",
+        "teamName": "Qatar",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "QAT3",
+        "playerName": "Saad Al Sheeb",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT4",
+        "playerName": "Meshaal Barsham",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT5",
+        "playerName": "Homam Ahmed",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT6",
+        "playerName": "Bassam Alrawi",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT7",
+        "playerName": "Abdulkarim Hassan",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT8",
+        "playerName": "Musaab Khidir",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT9",
+        "playerName": "Boualem Khoukhi",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT10",
+        "playerName": "Pedro Miguel",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT11",
+        "playerName": "Tarek Salman",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT12",
+        "playerName": "Karim Boudiaf",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT13",
+        "playerName": "Abdulaziz Hatem",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT14",
+        "playerName": "Assim Omer Madibo",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT15",
+        "playerName": "Yousuf Abdurisag",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT16",
+        "playerName": "Akram Hassan Afif",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT17",
+        "playerName": "Ahmad Alaaeldin",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT18",
+        "playerName": "Hasan Al-Haydos",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT19",
+        "playerName": "Almoez Ali",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "QAT20",
+        "playerName": "Mohammed Muntari",
+        "teamName": "Qatar",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU1",
+        "playerName": "Team Shot",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU2",
+        "playerName": "Team Logo",
+        "teamName": "Ecuador",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "ECU3",
+        "playerName": "Hernán Galíndez",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU4",
+        "playerName": "Alexander Domínguez",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU5",
+        "playerName": "Robert Arboleda",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU6",
+        "playerName": "Byron Castillo",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU7",
+        "playerName": "Pervis Estupiñán",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU8",
+        "playerName": "Piero Hincapié",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU9",
+        "playerName": "Ángelo Preciado",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU10",
+        "playerName": "Félix Torres",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU11",
+        "playerName": "Moisés Caicedo",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU12",
+        "playerName": "Alan Franco",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU13",
+        "playerName": "Carlos Gruezo",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU14",
+        "playerName": "Jhegson Méndez",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU15",
+        "playerName": "Jeremy Sarmiento",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU16",
+        "playerName": "Michael Estrada",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU17",
+        "playerName": "Ángel Mena",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU18",
+        "playerName": "Gonzalo Plata",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU19",
+        "playerName": "Ayrton Preciado",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ECU20",
+        "playerName": "Enner Valencia",
+        "teamName": "Ecuador",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN1",
+        "playerName": "Team Shot",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN2",
+        "playerName": "Team Logo",
+        "teamName": "Senegal",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "SEN3",
+        "playerName": "Édouard Mendy",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN4",
+        "playerName": "Alfred Gomis",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN5",
+        "playerName": "Saliou Ciss",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN6",
+        "playerName": "Pape Abou Cissé",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN7",
+        "playerName": "Abdou Diallo",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN8",
+        "playerName": "Kalidou Koulibaly",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN9",
+        "playerName": "Ibrahima Mbaye",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN10",
+        "playerName": "Bouna Sarr",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN11",
+        "playerName": "Krépin Diatta",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN12",
+        "playerName": "Idrissa Gueye",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN13",
+        "playerName": "Pape Gueye",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN14",
+        "playerName": "Cheikhou Kouyaté",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN15",
+        "playerName": "Nampalys Mendy",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN16",
+        "playerName": "Boulaye Dia",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN17",
+        "playerName": "Famara Diédhiou",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN18",
+        "playerName": "Bamba Dieng",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN19",
+        "playerName": "Sadio Mané",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SEN20",
+        "playerName": "Ismaïla Sarr",
+        "teamName": "Senegal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED1",
+        "playerName": "Team Shot",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED2",
+        "playerName": "Team Logo",
+        "teamName": "Netherlands",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "NED3",
+        "playerName": "Justin Bijlow",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED4",
+        "playerName": "Jasper Cillessen",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED5",
+        "playerName": "Daley Blind",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED6",
+        "playerName": "Matthijs de Ligt",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED7",
+        "playerName": "Stefan de Vrij",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED8",
+        "playerName": "Denzel Dumfries",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED9",
+        "playerName": "Virgil van Dijk",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED10",
+        "playerName": "Steven Berghuis",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED11",
+        "playerName": "Frenkie de Jong",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED12",
+        "playerName": "Ryan Gravenberch",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED13",
+        "playerName": "Davy Klaassen",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED14",
+        "playerName": "Teun Koopmeiners",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED15",
+        "playerName": "Georginio Wijnaldum",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED16",
+        "playerName": "Steven Bergwijn",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED17",
+        "playerName": "Arnaut Danjuma",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED18",
+        "playerName": "Memphis Depay",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED19",
+        "playerName": "Cody Gakpo",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "NED20",
+        "playerName": "Donyell Malen",
+        "teamName": "Netherlands",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG1",
+        "playerName": "Team Shot",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG2",
+        "playerName": "Team Logo",
+        "teamName": "England",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "ENG3",
+        "playerName": "Jordan Pickford",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG4",
+        "playerName": "Aaron Ramsdale",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG5",
+        "playerName": "Trent Alexander-Arnold",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG6",
+        "playerName": "Conor Coady",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG7",
+        "playerName": "Harry Maguire",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG8",
+        "playerName": "Luke Shaw",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG9",
+        "playerName": "John Stones",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG10",
+        "playerName": "Kyle Walker",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG11",
+        "playerName": "Jude Bellingham",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG12",
+        "playerName": "Jack Grealish",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG13",
+        "playerName": "Jordan Henderson",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG14",
+        "playerName": "Mason Mount",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG15",
+        "playerName": "Kalvin Phillips",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG16",
+        "playerName": "Declan Rice",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG17",
+        "playerName": "Phil Foden",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG18",
+        "playerName": "Harry Kane",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG19",
+        "playerName": "Bukayo Saka",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ENG20",
+        "playerName": "Raheem Sterling",
+        "teamName": "England",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN1",
+        "playerName": "Team Shot",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN2",
+        "playerName": "Team Logo",
+        "teamName": "Iran",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "IRN3",
+        "playerName": "Amir Abedzadeh",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN4",
+        "playerName": "Alireza Beiranvand",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN5",
+        "playerName": "Ehsan Hajsafi",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN6",
+        "playerName": "Majid Hosseini",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN7",
+        "playerName": "Hossein Kanaani",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN8",
+        "playerName": "Shoja Khalilzadeh",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN9",
+        "playerName": "Milad Mohammadi",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN10",
+        "playerName": "Sadegh Moharrami",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN11",
+        "playerName": "Omid Noorafkan",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN12",
+        "playerName": "Vahid Amiri",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN13",
+        "playerName": "Saeid Ezatolahi",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN14",
+        "playerName": "Ali Gholizadeh",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN15",
+        "playerName": "Alireza Jahanbakhsh",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN16",
+        "playerName": "Ahmad Nourollahi",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN17",
+        "playerName": "Karim Ansarifard",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN18",
+        "playerName": "Sardar Azmoun",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN19",
+        "playerName": "Saman Ghoddos",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "IRN20",
+        "playerName": "Mehdi Taremi",
+        "teamName": "Iran",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA1",
+        "playerName": "Team Shot",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA2",
+        "playerName": "Team Logo",
+        "teamName": "USA",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "USA3",
+        "playerName": "Matt Turner",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA4",
+        "playerName": "Zack Steffen",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA5",
+        "playerName": "Sergiño Dest",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA6",
+        "playerName": "Aaron Long",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA7",
+        "playerName": "Chris Richards",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA8",
+        "playerName": "Antonee Robinson",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA9",
+        "playerName": "DeAndre Yedlin",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA10",
+        "playerName": "Walker Zimmerman",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA11",
+        "playerName": "Brenden Aaronson",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA12",
+        "playerName": "Kellyn Acosta",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA13",
+        "playerName": "Tyler Adams",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA14",
+        "playerName": "Weston McKennie",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA15",
+        "playerName": "Yunus Musah",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA16",
+        "playerName": "Jesús Ferreira",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA17",
+        "playerName": "Ricardo Pepi",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA18",
+        "playerName": "Christian Pulisic",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA19",
+        "playerName": "Giovanni Reyna",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "USA20",
+        "playerName": "Timothy Weah",
+        "teamName": "USA",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL1",
+        "playerName": "Team Shot",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL2",
+        "playerName": "Team Logo",
+        "teamName": "Wales",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "WAL3",
+        "playerName": "Danny Ward",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL4",
+        "playerName": "Wayne Hennessey",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL5",
+        "playerName": "Ethan Ampadu",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL6",
+        "playerName": "Ben Davies",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL7",
+        "playerName": "Chris Gunter",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL8",
+        "playerName": "Chris Mepham",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL9",
+        "playerName": "Connor Roberts",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL10",
+        "playerName": "Joe Rodon",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL11",
+        "playerName": "Neco Williams",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL12",
+        "playerName": "Joe Allen",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL13",
+        "playerName": "Joe Morrell",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL14",
+        "playerName": "Aaron Ramsey",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL15",
+        "playerName": "Jonathan Williams",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL16",
+        "playerName": "Harry Wilson",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL17",
+        "playerName": "Gareth Bale",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL18",
+        "playerName": "Daniel James",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL19",
+        "playerName": "Brennan Johnson",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "WAL20",
+        "playerName": "Kieffer Moore",
+        "teamName": "Wales",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG1",
+        "playerName": "Team Shot",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG2",
+        "playerName": "Team Logo",
+        "teamName": "Argentina",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "ARG3",
+        "playerName": "Emiliano Martínez",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG4",
+        "playerName": "Franco Armani",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG5",
+        "playerName": "Marcos Acuña",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG6",
+        "playerName": "Nahuel Molina",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG7",
+        "playerName": "Nicolás Otamendi",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG8",
+        "playerName": "Germán Pezzella",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG9",
+        "playerName": "Cristian Romero",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG10",
+        "playerName": "Rodrigo De Paul",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG11",
+        "playerName": "Ángel Di María",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG12",
+        "playerName": "Giovani Lo Celso",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG13",
+        "playerName": "Leandro Paredes",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG14",
+        "playerName": "Guido Rodríguez",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG15",
+        "playerName": "Julián Álvarez",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG16",
+        "playerName": "Joaquín Correa",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG17",
+        "playerName": "Alejandro Gómez",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG18",
+        "playerName": "Nicolás González",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG19",
+        "playerName": "Lautaro Martínez",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ARG20",
+        "playerName": "Lionel Messi",
+        "teamName": "Argentina",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA1",
+        "playerName": "Team Shot",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA2",
+        "playerName": "Team Logo",
+        "teamName": "Saudi Arabia",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "KSA3",
+        "playerName": "Mohammed Al-Owais",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA4",
+        "playerName": "Mohammed Al-Rubaie",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA5",
+        "playerName": "Abdulelah Al-Amri",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA6",
+        "playerName": "Ali Al-Boleahi",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA7",
+        "playerName": "Mohammed Al-Burayk",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA8",
+        "playerName": "Sultan Al-Ghannam",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA9",
+        "playerName": "Yasser Al-Shahrani",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA10",
+        "playerName": "Hassan Al-Tambakti",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA11",
+        "playerName": "Abdullah Madu",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA12",
+        "playerName": "Salman Al-Faraj",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA13",
+        "playerName": "Abdulelah Al-Malki",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA14",
+        "playerName": "Sami Al-Najei",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA15",
+        "playerName": "Hattan Bahebri",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA16",
+        "playerName": "Mohamed Kanno",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA17",
+        "playerName": "Abdullah Otayf",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA18",
+        "playerName": "Firas Al-Buraikan",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA19",
+        "playerName": "Salem Al-Dawsari",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KSA20",
+        "playerName": "Khalid Al-Ghannam",
+        "teamName": "Saudi Arabia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX1",
+        "playerName": "Team Shot",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX2",
+        "playerName": "Team Logo",
+        "teamName": "Mexico",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "MEX3",
+        "playerName": "Guillermo Ochoa",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX4",
+        "playerName": "Alfredo Talavera",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX5",
+        "playerName": "Néstor Araújo",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX6",
+        "playerName": "Jesús Gallardo",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX7",
+        "playerName": "César Montes",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX8",
+        "playerName": "Héctor Moreno",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX9",
+        "playerName": "Luis Romo",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX10",
+        "playerName": "Jorge Sánchez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX11",
+        "playerName": "Edson Álvarez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX12",
+        "playerName": "Jesús Manuel Corona",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX13",
+        "playerName": "Andrés Guardado",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX14",
+        "playerName": "Érick Gutiérrez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX15",
+        "playerName": "Héctor Herrera",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX16",
+        "playerName": "Diego Lainez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX17",
+        "playerName": "Carlos Rodríguez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX18",
+        "playerName": "Rogelio Funes Mori",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX19",
+        "playerName": "Raúl Jiménez",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MEX20",
+        "playerName": "Hirving Lozano",
+        "teamName": "Mexico",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL1",
+        "playerName": "Team Shot",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL2",
+        "playerName": "Team Logo",
+        "teamName": "Poland",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "POL3",
+        "playerName": "Wojciech Szczęsny",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL4",
+        "playerName": "Łukasz Skorupski",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL5",
+        "playerName": "Jan Bednarek",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL6",
+        "playerName": "Bartosz Bereszyński",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL7",
+        "playerName": "Matty Cash",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL8",
+        "playerName": "Kamil Glik",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL9",
+        "playerName": "Tymoteusz Puchacz",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL10",
+        "playerName": "Maciej Rybus",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL11",
+        "playerName": "Kamil Jóźwiak",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL12",
+        "playerName": "Mateusz Klich",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL13",
+        "playerName": "Grzegorz Krychowiak",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL14",
+        "playerName": "Jakub Moder",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL15",
+        "playerName": "Sebastian Szymański",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL16",
+        "playerName": "Piotr Zieliński",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL17",
+        "playerName": "Robert Lewandowski",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL18",
+        "playerName": "Arkadiusz Milik",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL19",
+        "playerName": "Krzysztof Piątek",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POL20",
+        "playerName": "Karol Świderski",
+        "teamName": "Poland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA1",
+        "playerName": "Team Shot",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA2",
+        "playerName": "Team Logo",
+        "teamName": "France",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FRA3",
+        "playerName": "Hugo Lloris",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA4",
+        "playerName": "Mike Maignan",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA5",
+        "playerName": "Lucas Hernández",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA6",
+        "playerName": "Theo Hernández",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA7",
+        "playerName": "Presnel Kimpembe",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA8",
+        "playerName": "Jules Koundé",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA9",
+        "playerName": "Benjamin Pavard",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA10",
+        "playerName": "Raphaël Varane",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA11",
+        "playerName": "N’Golo Kanté",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA12",
+        "playerName": "Paul Pogba",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA13",
+        "playerName": "Adrien Rabiot",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA14",
+        "playerName": "Aurélien Tchouaméni",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA15",
+        "playerName": "Wissam Ben Yedder",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA16",
+        "playerName": "Karim Benzema",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA17",
+        "playerName": "Kingsley Coman",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA18",
+        "playerName": "Antoine Griezmann",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA19",
+        "playerName": "Kylian Mbappé",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FRA20",
+        "playerName": "Christopher Nkunku",
+        "teamName": "France",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS1",
+        "playerName": "Team Shot",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS2",
+        "playerName": "Team Logo",
+        "teamName": "Australia",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "AUS3",
+        "playerName": "Mathew Ryan",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS4",
+        "playerName": "Andrew Redmayne",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS5",
+        "playerName": "Aziz Behich",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS6",
+        "playerName": "Miloš Degenek",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS7",
+        "playerName": "Rhyan Grant",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS8",
+        "playerName": "Joel King",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS9",
+        "playerName": "Trent Sainsbury",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS10",
+        "playerName": "Harry Souttar",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS11",
+        "playerName": "Ajdin Hrustić",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS12",
+        "playerName": "Jackson Irvine",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS13",
+        "playerName": "James Jeggo",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS14",
+        "playerName": "Awer Mabil",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS15",
+        "playerName": "Aaron Mooy",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS16",
+        "playerName": "Martin Boyle",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS17",
+        "playerName": "Mitchell Duke",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS18",
+        "playerName": "Craig Goodwin",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS19",
+        "playerName": "Mathew Leckie",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "AUS20",
+        "playerName": "Adam Taggart",
+        "teamName": "Australia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN1",
+        "playerName": "Team Shot",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN2",
+        "playerName": "Team Logo",
+        "teamName": "Denmark",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "DEN3",
+        "playerName": "Kasper Schmeichel",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN4",
+        "playerName": "Frederik Rønnow",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN5",
+        "playerName": "Andreas Christensen",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN6",
+        "playerName": "Simon Kjær",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN7",
+        "playerName": "Joakim Mæhle",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN8",
+        "playerName": "Jens Stryger Larsen",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN9",
+        "playerName": "Jannik Vestergaard",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN10",
+        "playerName": "Mikkel Damsgaard",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN11",
+        "playerName": "Thomas Delaney",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN12",
+        "playerName": "Christian Eriksen",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN13",
+        "playerName": "Pierre Emile Højbjerg",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN14",
+        "playerName": "Christian Nørgaard",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN15",
+        "playerName": "Daniel Wass",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN16",
+        "playerName": "Martin Braithwaite",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN17",
+        "playerName": "Kasper Dolberg",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN18",
+        "playerName": "Yussuf Poulsen",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN19",
+        "playerName": "Andreas Skov Olsen",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "DEN20",
+        "playerName": "Jonas Wind",
+        "teamName": "Denmark",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN1",
+        "playerName": "Team Shot",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN2",
+        "playerName": "Team Logo",
+        "teamName": "Tunisia",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "TUN3",
+        "playerName": "Bechir Ben Saïd",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN4",
+        "playerName": "Farouk Ben Mustapha",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN5",
+        "playerName": "Dylan Bronn",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN6",
+        "playerName": "Mohamed Dräger",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN7",
+        "playerName": "Bilel Ifa",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN8",
+        "playerName": "Ali Maâloul",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN9",
+        "playerName": "Hamza Mathlouthi",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN10",
+        "playerName": "Yassine Meriah",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN11",
+        "playerName": "Montassar Talbi",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN12",
+        "playerName": "Mohamed Ali Ben Romdhane",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN13",
+        "playerName": "Wahbi Khazri",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN14",
+        "playerName": "Aïssa Laïdouni",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN15",
+        "playerName": "Ferjani Sassi",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN16",
+        "playerName": "Ellyes Skhiri",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN17",
+        "playerName": "Anis Slimane",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN18",
+        "playerName": "Seifeddine Jaziri",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN19",
+        "playerName": "Youssef Msakni",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "TUN20",
+        "playerName": "Naïm Sliti",
+        "teamName": "Tunisia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP1",
+        "playerName": "Team Shot",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP2",
+        "playerName": "Team Logo",
+        "teamName": "Spain",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "ESP3",
+        "playerName": "Unai Simón",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP4",
+        "playerName": "Robert Sánchez",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP5",
+        "playerName": "César Azpilicueta",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP6",
+        "playerName": "Eric García",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP7",
+        "playerName": "Jordi Alba",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP8",
+        "playerName": "Aymeric Laporte",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP9",
+        "playerName": "Pau Torres",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP10",
+        "playerName": "Gavi",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP11",
+        "playerName": "Koke",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP12",
+        "playerName": "Marcos Llorente",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP13",
+        "playerName": "Pedri",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP14",
+        "playerName": "Rodri",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP15",
+        "playerName": "Sergio Busquets",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP16",
+        "playerName": "Dani Olmo",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP17",
+        "playerName": "Ansu Fati",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP18",
+        "playerName": "Ferran Torres",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP19",
+        "playerName": "Álvaro Morata",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "ESP20",
+        "playerName": "Pablo Sarabia",
+        "teamName": "Spain",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC1",
+        "playerName": "Team Shot",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC2",
+        "playerName": "Team Logo",
+        "teamName": "Costa Rica",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "CRC3",
+        "playerName": "Keylor Navas",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC4",
+        "playerName": "Leonel Moreira",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC5",
+        "playerName": "Ricardo Blanco",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC6",
+        "playerName": "Francisco Calvo",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC7",
+        "playerName": "Óscar Duarte",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC8",
+        "playerName": "Keysher Fuller",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC9",
+        "playerName": "Bryan Oviedo",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC10",
+        "playerName": "Juan Pablo Vargas",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC11",
+        "playerName": "Kendall Waston",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC12",
+        "playerName": "Celso Borges",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC13",
+        "playerName": "Orlando Galo",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC14",
+        "playerName": "Bryan Ruiz",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC15",
+        "playerName": "Yeltsin Tejeda",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC16",
+        "playerName": "Jewison Bennette",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC17",
+        "playerName": "Joel Campbell",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC18",
+        "playerName": "Anthony Contreras",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC19",
+        "playerName": "Gerson Torres",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRC20",
+        "playerName": "Johan Venegas",
+        "teamName": "Costa Rica",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER1",
+        "playerName": "Team Shot",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER2",
+        "playerName": "Team Logo",
+        "teamName": "Germany",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "GER3",
+        "playerName": "Manuel Neuer",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER4",
+        "playerName": "Marc-André ter Stegen",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER5",
+        "playerName": "Matthias Ginter",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER6",
+        "playerName": "Robin Gosens",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER7",
+        "playerName": "Thilo Kehrer",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER8",
+        "playerName": "David Raum",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER9",
+        "playerName": "Antonio Rüdiger",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER10",
+        "playerName": "Niklas Süle",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER11",
+        "playerName": "Leon Goretzka",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER12",
+        "playerName": "İlkay Gündoğan",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER13",
+        "playerName": "Kai Havertz",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER14",
+        "playerName": "Jonas Hofmann",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER15",
+        "playerName": "Joshua Kimmich",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER16",
+        "playerName": "Serge Gnabry",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER17",
+        "playerName": "Thomas Müller",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER18",
+        "playerName": "Marco Reus",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER19",
+        "playerName": "Leroy Sané",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GER20",
+        "playerName": "Timo Werner",
+        "teamName": "Germany",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN1",
+        "playerName": "Team Shot",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN2",
+        "playerName": "Team Logo",
+        "teamName": "Japan",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "JPN3",
+        "playerName": "Shuichi Gonda",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN4",
+        "playerName": "Eiji Kawashima",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN5",
+        "playerName": "Yuto Nagatomo",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN6",
+        "playerName": "Yuta Nakayama",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN7",
+        "playerName": "Takehiro Tomiyasu",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN8",
+        "playerName": "Miki Yamane",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN9",
+        "playerName": "Maya Yoshida",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN10",
+        "playerName": "Wataru Endo",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN11",
+        "playerName": "Genki Haraguchi",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN12",
+        "playerName": "Hidemasa Morita",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN13",
+        "playerName": "Gaku Shibasaki",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN14",
+        "playerName": "Ao Tanaka",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN15",
+        "playerName": "Takuma Asano",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN16",
+        "playerName": "Kyogo Furuhashi",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN17",
+        "playerName": "Junya Ito",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN18",
+        "playerName": "Takumi Minamino",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN19",
+        "playerName": "Kaoru Mitoma",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "JPN20",
+        "playerName": "Yuya Osako",
+        "teamName": "Japan",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL1",
+        "playerName": "Team Shot",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL2",
+        "playerName": "Team Logo",
+        "teamName": "Belgium",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "BEL3",
+        "playerName": "Thibaut Courtois",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL4",
+        "playerName": "Simon Mignolet",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL5",
+        "playerName": "Toby Alderweireld",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL6",
+        "playerName": "Timothy Castagne",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL7",
+        "playerName": "Jason Denayer",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL8",
+        "playerName": "Thomas Meunier",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL9",
+        "playerName": "Jan Vertonghen",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL10",
+        "playerName": "Yannick Carrasco",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL11",
+        "playerName": "Kevin De Bruyne",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL12",
+        "playerName": "Charles De Ketelaere",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL13",
+        "playerName": "Thorgan Hazard",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL14",
+        "playerName": "Youri Tielemans",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL15",
+        "playerName": "Hans Vanaken",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL16",
+        "playerName": "Axel Witsel",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL17",
+        "playerName": "Jérémy Doku",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL18",
+        "playerName": "Eden Hazard",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL19",
+        "playerName": "Romelu Lukaku",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BEL20",
+        "playerName": "Dries Mertens",
+        "teamName": "Belgium",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN1",
+        "playerName": "Team Shot",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN2",
+        "playerName": "Team Logo",
+        "teamName": "Canada",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "CAN3",
+        "playerName": "Milan Borjan",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN4",
+        "playerName": "Maxime Crépeau",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN5",
+        "playerName": "Samuel Adekugbe",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN6",
+        "playerName": "Doneil Henry",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN7",
+        "playerName": "Alistair Johnston",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN8",
+        "playerName": "Richie Laryea",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN9",
+        "playerName": "Kamal Miller",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN10",
+        "playerName": "Steven Vitória",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN11",
+        "playerName": "Tajon Buchanan",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN12",
+        "playerName": "Alphonso Davies",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN13",
+        "playerName": "Stephen Eustáquio",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN14",
+        "playerName": "Atiba Hutchinson",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN15",
+        "playerName": "Mark-Anthony Kaye",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN16",
+        "playerName": "Jonathan Osorio",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN17",
+        "playerName": "Samuel Piette",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN18",
+        "playerName": "Jonathan David",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN19",
+        "playerName": "David Junior Hoilett",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CAN20",
+        "playerName": "Cyle Larin",
+        "teamName": "Canada",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR1",
+        "playerName": "Team Shot",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR2",
+        "playerName": "Team Logo",
+        "teamName": "Morocco",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "MAR3",
+        "playerName": "Yassine Bounou",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR4",
+        "playerName": "Munir Mohamedi",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR5",
+        "playerName": "Nayef Aguerd",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR6",
+        "playerName": "Achraf Hakimi",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR7",
+        "playerName": "Adam Masina",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR8",
+        "playerName": "Samy Mmaee",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR9",
+        "playerName": "Romain Saïss",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR10",
+        "playerName": "Selim Amallah",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR11",
+        "playerName": "Sofyan Amrabat",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR12",
+        "playerName": "Aymen Barkok",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR13",
+        "playerName": "Ilias Chair",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR14",
+        "playerName": "Imrân Louza",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR15",
+        "playerName": "Sofiane Boufal",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR16",
+        "playerName": "Ayoub El Kaabi",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR17",
+        "playerName": "Youssef En-Nesyri",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR18",
+        "playerName": "Ryan Mmaee",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR19",
+        "playerName": "Munir",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "MAR20",
+        "playerName": "Tarik Tissoudali",
+        "teamName": "Morocco",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO1",
+        "playerName": "Team Shot",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO2",
+        "playerName": "Team Logo",
+        "teamName": "Croatia",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "CRO3",
+        "playerName": "Dominik Livaković",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO4",
+        "playerName": "Ivica Ivušić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO5",
+        "playerName": "Duje Ćaleta-Car",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO6",
+        "playerName": "Joško Gvardiol",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO7",
+        "playerName": "Josip Juranović",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO8",
+        "playerName": "Dejan Lovren",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO9",
+        "playerName": "Borna Sosa",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO10",
+        "playerName": "Domagoj Vida",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO11",
+        "playerName": "Marcelo Brozović",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO12",
+        "playerName": "Mateo Kovačić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO13",
+        "playerName": "Luka Modrić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO14",
+        "playerName": "Mario Pašalić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO15",
+        "playerName": "Ivan Perišić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO16",
+        "playerName": "Nikola Vlašić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO17",
+        "playerName": "Josip Brekalo",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO18",
+        "playerName": "Andrej Kramarić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO19",
+        "playerName": "Marko Livaja",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CRO20",
+        "playerName": "Mislav Oršić",
+        "teamName": "Croatia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA1",
+        "playerName": "Team Shot",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA2",
+        "playerName": "Team Logo",
+        "teamName": "Brazil",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "BRA3",
+        "playerName": "Alisson",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA4",
+        "playerName": "Ederson",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA5",
+        "playerName": "Alex Sandro",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA6",
+        "playerName": "Danilo",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA7",
+        "playerName": "Éder Militão",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA8",
+        "playerName": "Marquinhos",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA9",
+        "playerName": "Thiago Silva",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA10",
+        "playerName": "Casemiro",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA11",
+        "playerName": "Philippe Coutinho",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA12",
+        "playerName": "Fabinho",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA13",
+        "playerName": "Fred",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA14",
+        "playerName": "Lucas Paquetá",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA15",
+        "playerName": "Antony",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA16",
+        "playerName": "Gabriel Jesus",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA17",
+        "playerName": "Neymar Jr",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA18",
+        "playerName": "Raphinha",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA19",
+        "playerName": "Richarlison",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "BRA20",
+        "playerName": "Vinícius Jr",
+        "teamName": "Brazil",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB1",
+        "playerName": "Team Shot",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB2",
+        "playerName": "Team Logo",
+        "teamName": "Serbia",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "SRB3",
+        "playerName": "Predrag Rajković",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB4",
+        "playerName": "Vanja Milinković-Savić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB5",
+        "playerName": "Nikola Milenković",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB6",
+        "playerName": "Strahinja Pavlović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB7",
+        "playerName": "Miloš Veljković",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB8",
+        "playerName": "Filip Đuričić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB9",
+        "playerName": "Nemanja Gudelj",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB10",
+        "playerName": "Filip Kostić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB11",
+        "playerName": "Darko Lazović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB12",
+        "playerName": "Saša Lukić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB13",
+        "playerName": "Nemanja Maksimović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB14",
+        "playerName": "Sergej Milinković-Savić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB15",
+        "playerName": "Nemanja Radonjić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB16",
+        "playerName": "Andrija Živković",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB17",
+        "playerName": "Luka Jović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB18",
+        "playerName": "Aleksandar Mitrović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB19",
+        "playerName": "Dušan Tadić",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SRB20",
+        "playerName": "Dušan Vlahović",
+        "teamName": "Serbia",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI1",
+        "playerName": "Team Shot",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI2",
+        "playerName": "Team Logo",
+        "teamName": "Switzerland",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "SUI3",
+        "playerName": "Yann Sommer",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI4",
+        "playerName": "Gregor Kobel",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI5",
+        "playerName": "Manuel Akanji",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI6",
+        "playerName": "Nico Elvedi",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI7",
+        "playerName": "Kevin Mbabu",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI8",
+        "playerName": "Ricardo Rodríguez",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI9",
+        "playerName": "Fabian Schär",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI10",
+        "playerName": "Silvan Widmer",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI11",
+        "playerName": "Remo Freuler",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI12",
+        "playerName": "Xherdan Shaqiri",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI13",
+        "playerName": "Djibril Sow",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI14",
+        "playerName": "Granit Xhaka",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI15",
+        "playerName": "Denis Zakaria",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI16",
+        "playerName": "Steven Zuber",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI17",
+        "playerName": "Breel Embolo",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI18",
+        "playerName": "Noah Okafor",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI19",
+        "playerName": "Haris Seferović",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "SUI20",
+        "playerName": "Ruben Vargas",
+        "teamName": "Switzerland",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR1",
+        "playerName": "Team Shot",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR2",
+        "playerName": "Team Logo",
+        "teamName": "Cameroon",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "CMR3",
+        "playerName": "André Onana",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR4",
+        "playerName": "Devis Epassy",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR5",
+        "playerName": "Jean-Charles Castelletto",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR6",
+        "playerName": "Collins Fai",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR7",
+        "playerName": "Olivier Mbaizo",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR8",
+        "playerName": "Harold Moukoudi",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR9",
+        "playerName": "Michael Ngadeu",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR10",
+        "playerName": "Nouhou",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR11",
+        "playerName": "Martin Hongla",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR12",
+        "playerName": "Pierre Kunde",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR13",
+        "playerName": "James Léa Siliki",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR14",
+        "playerName": "Samuel Oum Gouet",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR15",
+        "playerName": "André-Frank Zambo Anguissa",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR16",
+        "playerName": "Vincent Aboubakar",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR17",
+        "playerName": "Stéphane Bahoken",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR18",
+        "playerName": "Eric Maxim Choupo-Moting",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR19",
+        "playerName": "Nicolas Moumi Ngamaleu",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "CMR20",
+        "playerName": "Karl Toko Ekambi",
+        "teamName": "Cameroon",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR1",
+        "playerName": "Team Shot",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR2",
+        "playerName": "Team Logo",
+        "teamName": "Portugal",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "POR3",
+        "playerName": "Diogo Costa",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR4",
+        "playerName": "Rui Patrício",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR5",
+        "playerName": "João Cancelo",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR6",
+        "playerName": "José Fonte",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR7",
+        "playerName": "Nuno Mendes",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR8",
+        "playerName": "Pepe",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR9",
+        "playerName": "Raphaël Guerreiro",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR10",
+        "playerName": "Rúben Dias",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR11",
+        "playerName": "Bernardo Silva",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR12",
+        "playerName": "Bruno Fernandes",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR13",
+        "playerName": "Danilo Pereira",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR14",
+        "playerName": "João Moutinho",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR15",
+        "playerName": "Renato Sanches",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR16",
+        "playerName": "Rúben Neves",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR17",
+        "playerName": "André Silva",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR18",
+        "playerName": "Cristiano Ronaldo",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR19",
+        "playerName": "Diogo Jota",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "POR20",
+        "playerName": "Gonçalo Guedes",
+        "teamName": "Portugal",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA1",
+        "playerName": "Team Shot",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA2",
+        "playerName": "Team Logo",
+        "teamName": "Ghana",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "GHA3",
+        "playerName": "Joe Wollacott",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA4",
+        "playerName": "Richard Ofori",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA5",
+        "playerName": "Daniel Amartey",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA6",
+        "playerName": "Abdul-Rahman Baba",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA7",
+        "playerName": "Alexander Djiku",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA8",
+        "playerName": "Gideon Mensah",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA9",
+        "playerName": "Jonathan Mensah",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA10",
+        "playerName": "Andy Yiadom",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA11",
+        "playerName": "Iddrisu Baba",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA12",
+        "playerName": "Mohammed Kudus",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA13",
+        "playerName": "Daniel-Kofi Kyereh",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA14",
+        "playerName": "Thomas Partey",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA15",
+        "playerName": "Mubarak Wakaso",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA16",
+        "playerName": "Felix Afena-Gyan",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA17",
+        "playerName": "André Ayew",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA18",
+        "playerName": "Jordan Ayew",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA19",
+        "playerName": "Issahaku Abdul Fatawu",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "GHA20",
+        "playerName": "Kamaldeen Sulemana",
+        "teamName": "Ghana",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU1",
+        "playerName": "Team Shot",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU2",
+        "playerName": "Team Logo",
+        "teamName": "Uruguay",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "URU3",
+        "playerName": "Fernando Muslera",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU4",
+        "playerName": "Sergio Rochet",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU5",
+        "playerName": "Ronald Araújo",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU6",
+        "playerName": "Martín Cáceres",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU7",
+        "playerName": "José María Giménez",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU8",
+        "playerName": "Diego Godín",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU9",
+        "playerName": "Mathías Olivera",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU10",
+        "playerName": "Matías Viña",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU11",
+        "playerName": "Rodrigo Bentancur",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU12",
+        "playerName": "Giorgian De Arrascaeta",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU13",
+        "playerName": "Nicolás De La Cruz",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU14",
+        "playerName": "Lucas Torreira",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU15",
+        "playerName": "Federico Valverde",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU16",
+        "playerName": "Matías Vecino",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU17",
+        "playerName": "Edinson Cavani",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU18",
+        "playerName": "Darwin Núñez",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU19",
+        "playerName": "Facundo Pellistri",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "URU20",
+        "playerName": "Luis Suárez",
+        "teamName": "Uruguay",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR1",
+        "playerName": "Team Shot",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR2",
+        "playerName": "Team Logo",
+        "teamName": "Korea Republic",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "KOR3",
+        "playerName": "Seung-gyu Kim",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR4",
+        "playerName": "Hyeon-woo Jo",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR5",
+        "playerName": "Chul Hong",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR6",
+        "playerName": "Tae-hwan Kim",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR7",
+        "playerName": "Min-jae Kim",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR8",
+        "playerName": "Young-gwon Kim",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR9",
+        "playerName": "Jin-su Kim",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR10",
+        "playerName": "Yong Lee",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR11",
+        "playerName": "In-beom Hwang",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR12",
+        "playerName": "Woo-young Jung",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR13",
+        "playerName": "Jae-sung Lee",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR14",
+        "playerName": "Seung-ho Paik",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR15",
+        "playerName": "Gue-sung Cho",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR16",
+        "playerName": "Hee-chan Hwang",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR17",
+        "playerName": "Ui-jo Hwang",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR18",
+        "playerName": "Chang-hoon Kwon",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR19",
+        "playerName": "Heung-min Son",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "KOR20",
+        "playerName": "Min-kyu Song",
+        "teamName": "Korea Republic",
+        "type": "-"
+    },
+    {
+        "stickerCode": "FWC19",
+        "playerName": "Uruguay 1930",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC20",
+        "playerName": "Italy 1938",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC21",
+        "playerName": "Brazil 1958",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC22",
+        "playerName": "England 1966",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC23",
+        "playerName": "Brazil 1970",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC24",
+        "playerName": "Argentina 1978",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC25",
+        "playerName": "Italy 1982",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC26",
+        "playerName": "Germany FR 1990",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC27",
+        "playerName": "France 1998",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC28",
+        "playerName": "Spain 2010",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    },
+    {
+        "stickerCode": "FWC29",
+        "playerName": "France 2018",
+        "teamName": "FIFA Museum",
+        "type": "foil"
+    }
+]
