@@ -20,6 +20,25 @@ interface StickerDao {
     @Query("SELECT * FROM stickers WHERE stickerCode = :stickerCode LIMIT 1")
     suspend fun getByStickerCode(stickerCode: String): StickerEntity?
 
+    @Query(
+        """
+        SELECT * FROM stickers
+        WHERE collectionSetId = :setId
+        AND borderColor = 'White'
+        AND (playerName LIKE '%' || :query || '%' OR teamName LIKE '%' || :query || '%')
+        LIMIT 1
+        """,
+    )
+    suspend fun findBaseStickerByText(
+        setId: Long,
+        query: String,
+    ): StickerEntity?
+
+    @Query(
+        "SELECT COUNT(DISTINCT stickerCode) FROM stickers WHERE isOwned = 1 AND collectionSetId = :setId",
+    )
+    fun countUniqueOwned(setId: Long): Flow<Int>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(sticker: StickerEntity): Long
 

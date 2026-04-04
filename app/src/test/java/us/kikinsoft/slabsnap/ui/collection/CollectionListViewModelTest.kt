@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
@@ -28,27 +29,44 @@ class CollectionListViewModelTest {
 
     private val repository: StickerRepository = mockk()
 
+    private fun stubRepository(
+        stickers: List<StickerEntity> = emptyList(),
+        uniqueOwned: Int = 0,
+    ) {
+        every { repository.getStickersBySet(1L) } returns flowOf(stickers)
+        every { repository.countUniqueOwned(1L) } returns flowOf(uniqueOwned)
+    }
+
     private fun createViewModel(): CollectionListViewModel = CollectionListViewModel(repository)
 
     private fun testSticker(
         id: Long = 1L,
         stickerCode: String = "ARG 10",
         playerName: String = "Lionel Messi",
+        teamName: String = "Argentina",
+        isOwned: Boolean = false,
+        borderColor: String = "White",
+        metadata: Map<String, String> = emptyMap(),
     ) = StickerEntity(
         id = id,
         stickerCode = stickerCode,
         playerName = playerName,
-        teamName = "Argentina",
-        metadata = emptyMap(),
+        teamName = teamName,
+        metadata = metadata,
         collectionSetId = 1L,
-        isOwned = true,
+        isOwned = isOwned,
+        borderColor = borderColor,
     )
+
+    // region Loading
 
     @Test
     fun `GIVEN repository has not emitted WHEN viewModel is created THEN state is loading`() = runTest {
         // Given
-        val loadingFlow = MutableSharedFlow<List<StickerEntity>>()
-        every { repository.getStickers() } returns loadingFlow
+        val stickersFlow = MutableSharedFlow<List<StickerEntity>>()
+        val ownedFlow = MutableSharedFlow<Int>()
+        every { repository.getStickersBySet(1L) } returns stickersFlow
+        every { repository.countUniqueOwned(1L) } returns ownedFlow
 
         // When
         val viewModel = createViewModel()
@@ -56,47 +74,54 @@ class CollectionListViewModelTest {
         // Then
         assertTrue(viewModel.uiState.value.isLoading)
 
-        loadingFlow.emit(emptyList())
+        stickersFlow.emit(emptyList())
+        ownedFlow.emit(0)
         assertFalse(viewModel.uiState.value.isLoading)
     }
 
+    // endregion
+
+    // region Sticker loading and mapping
+
     @Test
-    fun `GIVEN repository returns stickers WHEN viewModel is created THEN state contains stickers`() = runTest {
+    fun `GIVEN repository returns stickers WHEN viewModel is created THEN state maps entities to UI models`() =
+        runTest {
+            // Given
+            val stickers = listOf(
+                testSticker(isOwned = true, borderColor = "Blue"),
+                testSticker(id = 2L, stickerCode = "BRA 9", playerName = "Richarlison", teamName = "Brazil"),
+            )
+            stubRepository(stickers = stickers, uniqueOwned = 1)
+
+            // When
+            val viewModel = createViewModel()
+
+            // Then
+            val uiModels = viewModel.uiState.value.stickers
+            assertEquals(2, uiModels.size)
+            assertTrue(uiModels[0].isOwned)
+            assertEquals("Blue", uiModels[0].borderColor)
+            assertFalse(uiModels[1].isOwned)
+        }
+
+    @Test
+    fun `GIVEN sticker has is_foil metadata WHEN mapped THEN UI model isFoil is true`() = runTest {
         // Given
-        val stickers = listOf(testSticker(), testSticker(id = 2L, stickerCode = "BRA 9"))
-        every { repository.getStickers() } returns flowOf(stickers)
+        val sticker = testSticker(metadata = mapOf("is_foil" to "true"))
+        stubRepository(stickers = listOf(sticker))
 
         // When
         val viewModel = createViewModel()
 
         // Then
-        val uiModels = viewModel.uiState.value.stickers
-        assertEquals(2, uiModels.size)
-        assertEquals("ARG 10", uiModels[0].stickerCode)
-        assertEquals("Lionel Messi", uiModels[0].playerName)
-        assertEquals("BRA 9", uiModels[1].stickerCode)
-        assertFalse(viewModel.uiState.value.isLoading)
-        assertFalse(viewModel.uiState.value.isEmpty)
-    }
-
-    @Test
-    fun `GIVEN repository returns empty list WHEN viewModel is created THEN state is empty`() = runTest {
-        // Given
-        every { repository.getStickers() } returns flowOf(emptyList())
-
-        // When
-        val viewModel = createViewModel()
-
-        // Then
-        assertTrue(viewModel.uiState.value.stickers.isEmpty())
-        assertFalse(viewModel.uiState.value.isLoading)
-        assertTrue(viewModel.uiState.value.isEmpty)
+        assertTrue(viewModel.uiState.value.stickers[0].isFoil)
     }
 
     @Test
     fun `GIVEN repository throws WHEN viewModel loads THEN error effect is emitted`() = runTest {
         // Given
-        every { repository.getStickers() } returns flow { throw RuntimeException("DB error") }
+        every { repository.getStickersBySet(1L) } returns flow { throw RuntimeException("DB error") }
+        every { repository.countUniqueOwned(1L) } returns flowOf(0)
 
         // When
         val viewModel = createViewModel()
@@ -109,42 +134,119 @@ class CollectionListViewModelTest {
         }
     }
 
+    // endregion
+
+    // region Progress
+
     @Test
-    fun `GIVEN a sticker exists WHEN DeleteSticker event is handled THEN repository delete is called`() = runTest {
+    fun `GIVEN repository returns owned count WHEN viewModel loads THEN progress is reflected in state`() = runTest {
         // Given
-        val sticker = testSticker()
-        every { repository.getStickers() } returns flowOf(listOf(sticker))
-        coEvery { repository.deleteStickerById(sticker.id) } returns Unit
+        val stickers = listOf(
+            testSticker(isOwned = true),
+            testSticker(id = 2L, stickerCode = "BRA 9", playerName = "Richarlison", teamName = "Brazil"),
+        )
+        stubRepository(stickers = stickers, uniqueOwned = 1)
+
+        // When
+        val viewModel = createViewModel()
+
+        // Then
+        assertEquals(1, viewModel.uiState.value.uniqueOwnedCount)
+        assertEquals(2, viewModel.uiState.value.totalInSet)
+    }
+
+    // endregion
+
+    // region Filtering
+
+    @Test
+    fun `GIVEN filter is ALL WHEN SetFilter to MISSING THEN state filter updates`() = runTest {
+        // Given
+        stubRepository()
         val viewModel = createViewModel()
 
         // When
-        viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker.id))
+        viewModel.handleEvent(CollectionListEvent.SetFilter(FilterMode.MISSING))
 
         // Then
-        coVerify { repository.deleteStickerById(sticker.id) }
+        assertEquals(FilterMode.MISSING, viewModel.uiState.value.filter)
+    }
+
+    // endregion
+
+    // region Quick Add
+
+    @Test
+    fun `GIVEN an unowned sticker WHEN OnQuickAddClicked THEN selectedStickerForAdd is set`() = runTest {
+        // Given
+        stubRepository(stickers = listOf(testSticker()))
+        val viewModel = createViewModel()
+        val stickerUi = viewModel.uiState.value.stickers[0]
+
+        // When
+        viewModel.handleEvent(CollectionListEvent.OnQuickAddClicked(stickerUi))
+
+        // Then
+        assertEquals(stickerUi, viewModel.uiState.value.selectedStickerForAdd)
     }
 
     @Test
-    fun `GIVEN delete will fail WHEN DeleteSticker event is handled THEN error effect is emitted`() = runTest {
+    fun `GIVEN quick add sheet open WHEN DismissQuickAdd THEN selectedStickerForAdd is null`() = runTest {
         // Given
-        val sticker = testSticker()
-        every { repository.getStickers() } returns flowOf(listOf(sticker))
-        coEvery { repository.deleteStickerById(sticker.id) } throws RuntimeException("Delete failed")
+        stubRepository(stickers = listOf(testSticker()))
         val viewModel = createViewModel()
+        viewModel.handleEvent(CollectionListEvent.OnQuickAddClicked(viewModel.uiState.value.stickers[0]))
+
+        // When
+        viewModel.handleEvent(CollectionListEvent.DismissQuickAdd)
+
+        // Then
+        assertNull(viewModel.uiState.value.selectedStickerForAdd)
+    }
+
+    @Test
+    fun `GIVEN quick add sheet open WHEN OnColorSelected THEN repository inserts variant and sheet closes`() = runTest {
+        // Given
+        stubRepository(stickers = listOf(testSticker()))
+        coEvery { repository.insertParallelVariant("ARG 10", 1L, "Blue") } returns 2L
+        val viewModel = createViewModel()
+        viewModel.handleEvent(CollectionListEvent.OnQuickAddClicked(viewModel.uiState.value.stickers[0]))
+
+        // When
+        viewModel.handleEvent(CollectionListEvent.OnColorSelected("Blue"))
+
+        // Then
+        coVerify { repository.insertParallelVariant("ARG 10", 1L, "Blue") }
+        assertNull(viewModel.uiState.value.selectedStickerForAdd)
+    }
+
+    @Test
+    fun `GIVEN quick add fails WHEN OnColorSelected THEN error effect is emitted`() = runTest {
+        // Given
+        stubRepository(stickers = listOf(testSticker()))
+        coEvery {
+            repository.insertParallelVariant("ARG 10", 1L, "Red")
+        } throws RuntimeException("Insert failed")
+        val viewModel = createViewModel()
+        viewModel.handleEvent(CollectionListEvent.OnQuickAddClicked(viewModel.uiState.value.stickers[0]))
 
         // When / Then
         viewModel.effects.test {
-            viewModel.handleEvent(CollectionListEvent.DeleteSticker(sticker.id))
+            viewModel.handleEvent(CollectionListEvent.OnColorSelected("Red"))
             val effect = awaitItem()
             assertTrue(effect is CollectionListEffect.ShowError)
-            assertEquals("Delete failed", (effect as CollectionListEffect.ShowError).message)
+            assertEquals("Insert failed", (effect as CollectionListEffect.ShowError).message)
         }
     }
 
+    // endregion
+
+    // region Navigation
+
     @Test
-    fun `GIVEN viewModel exists WHEN NavigateToScanner event is handled THEN navigation effect is emitted`() = runTest {
+    fun `GIVEN viewModel exists WHEN NavigateToScanner event THEN navigation effect is emitted`() = runTest {
         // Given
-        every { repository.getStickers() } returns flowOf(emptyList())
+        stubRepository()
         val viewModel = createViewModel()
 
         // When / Then
@@ -153,4 +255,6 @@ class CollectionListViewModelTest {
             assertEquals(CollectionListEffect.NavigateToScanner, awaitItem())
         }
     }
+
+    // endregion
 }

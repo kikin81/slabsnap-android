@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import us.kikinsoft.slabsnap.data.mlkit.StickerAnalyzer
 
 @Composable
 fun CameraPreview(
+    isAnalyzerPaused: Boolean,
     onError: (String) -> Unit,
     onCardStabilize: (Bitmap) -> Unit,
     modifier: Modifier = Modifier,
@@ -70,6 +72,12 @@ fun CameraPreview(
             onCardLost = { detectedBox = null },
             onStabilityReached = { currentOnCardStabilize(it) },
         )
+    }
+
+    LaunchedEffect(isAnalyzerPaused) {
+        if (!isAnalyzerPaused) {
+            analyzer.resume()
+        }
     }
 
     DisposableEffect(lifecycleOwner) {

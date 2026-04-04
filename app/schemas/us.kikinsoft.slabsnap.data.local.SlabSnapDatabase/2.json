@@ -1,0 +1,145 @@
+{
+    "formatVersion": 1,
+    "database": {
+        "version": 2,
+        "identityHash": "33e449fb8a88b286367f4cc6cd2e2e94",
+        "entities": [
+            {
+                "tableName": "stickers",
+                "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `stickerCode` TEXT NOT NULL, `playerName` TEXT NOT NULL, `teamName` TEXT NOT NULL, `metadata` TEXT NOT NULL, `collectionSetId` INTEGER NOT NULL, `borderColor` TEXT NOT NULL, `isOwned` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, FOREIGN KEY(`collectionSetId`) REFERENCES `collection_sets`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+                "fields": [
+                    {
+                        "fieldPath": "id",
+                        "columnName": "id",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "stickerCode",
+                        "columnName": "stickerCode",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "playerName",
+                        "columnName": "playerName",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "teamName",
+                        "columnName": "teamName",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "metadata",
+                        "columnName": "metadata",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "collectionSetId",
+                        "columnName": "collectionSetId",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "borderColor",
+                        "columnName": "borderColor",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "isOwned",
+                        "columnName": "isOwned",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "createdAt",
+                        "columnName": "createdAt",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "updatedAt",
+                        "columnName": "updatedAt",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    }
+                ],
+                "primaryKey": {
+                    "autoGenerate": true,
+                    "columnNames": ["id"]
+                },
+                "indices": [
+                    {
+                        "name": "index_stickers_collectionSetId_stickerCode_borderColor",
+                        "unique": true,
+                        "columnNames": [
+                            "collectionSetId",
+                            "stickerCode",
+                            "borderColor"
+                        ],
+                        "orders": [],
+                        "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_stickers_collectionSetId_stickerCode_borderColor` ON `${TABLE_NAME}` (`collectionSetId`, `stickerCode`, `borderColor`)"
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "table": "collection_sets",
+                        "onDelete": "CASCADE",
+                        "onUpdate": "NO ACTION",
+                        "columns": ["collectionSetId"],
+                        "referencedColumns": ["id"]
+                    }
+                ]
+            },
+            {
+                "tableName": "collection_sets",
+                "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `year` INTEGER NOT NULL, `publisher` TEXT NOT NULL, `totalStickers` INTEGER NOT NULL)",
+                "fields": [
+                    {
+                        "fieldPath": "id",
+                        "columnName": "id",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "name",
+                        "columnName": "name",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "year",
+                        "columnName": "year",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "publisher",
+                        "columnName": "publisher",
+                        "affinity": "TEXT",
+                        "notNull": true
+                    },
+                    {
+                        "fieldPath": "totalStickers",
+                        "columnName": "totalStickers",
+                        "affinity": "INTEGER",
+                        "notNull": true
+                    }
+                ],
+                "primaryKey": {
+                    "autoGenerate": true,
+                    "columnNames": ["id"]
+                }
+            }
+        ],
+        "setupQueries": [
+            "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+            "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '33e449fb8a88b286367f4cc6cd2e2e94')"
+        ]
+    }
+}

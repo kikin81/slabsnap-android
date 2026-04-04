@@ -12,6 +12,8 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
     override fun getStickersBySet(collectionSetId: Long): Flow<List<StickerEntity>> =
         stickerDao.getByCollectionSet(collectionSetId)
 
+    override fun countUniqueOwned(collectionSetId: Long): Flow<Int> = stickerDao.countUniqueOwned(collectionSetId)
+
     override suspend fun addSticker(sticker: StickerEntity): Long = stickerDao.insert(sticker)
 
     override suspend fun updateSticker(sticker: StickerEntity) = stickerDao.update(sticker)
@@ -19,4 +21,36 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
     override suspend fun deleteSticker(sticker: StickerEntity) = stickerDao.delete(sticker)
 
     override suspend fun deleteStickerById(id: Long) = stickerDao.deleteById(id)
+
+    override suspend fun findByStickerCode(stickerCode: String): StickerEntity? =
+        stickerDao.getByStickerCode(stickerCode)
+
+    override suspend fun findBaseStickerByText(
+        setId: Long,
+        query: String,
+    ): StickerEntity? = stickerDao.findBaseStickerByText(setId, query)
+
+    override suspend fun insertParallelVariant(
+        baseStickerCode: String,
+        collectionSetId: Long,
+        borderColor: String,
+    ): Long {
+        val baseSticker = stickerDao.getByStickerCode(baseStickerCode)
+            ?: throw IllegalArgumentException("Base sticker not found: $baseStickerCode")
+
+        return if (borderColor == "White") {
+            stickerDao.update(baseSticker.copy(isOwned = true, updatedAt = System.currentTimeMillis()))
+            baseSticker.id
+        } else {
+            stickerDao.insert(
+                baseSticker.copy(
+                    id = 0,
+                    borderColor = borderColor,
+                    isOwned = true,
+                    createdAt = System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis(),
+                ),
+            )
+        }
+    }
 }
