@@ -99,8 +99,11 @@ class CardDataExtractor @Inject constructor() {
 
         val response: GenerateContentResponse = generativeModel.generateContent(request)
 
-        return response.candidates.firstOrNull()?.text?.trim()
+        val rawCode = response.candidates.firstOrNull()?.text?.trim()
             ?: throw ExtractionException("Model returned empty response for back code")
+
+        // Normalize: strip spaces between prefix and number (e.g. "ARG 2" → "ARG2")
+        return rawCode.replace(" ", "")
     }
 
     companion object {
@@ -124,7 +127,7 @@ class CardDataExtractor @Inject constructor() {
         """.trimIndent()
 
         private val BACK_CODE_PROMPT = """
-            Extract the short alphanumeric sticker code from the top-left area of this card back image. The code consists of a 2-3 letter country/category abbreviation followed by a space and a number (e.g. "ARG 2", "MAR 1", "FWC 9", "GER 2", "USA 16").
+            Extract the short alphanumeric sticker code from the top-left area of this card back image. The code consists of a 2-3 letter country/category abbreviation immediately followed by a number, with no space (e.g. "ARG2", "MAR1", "FWC9", "GER2", "USA16").
 
             Return ONLY the code string, nothing else. No JSON, no explanation.
         """.trimIndent()

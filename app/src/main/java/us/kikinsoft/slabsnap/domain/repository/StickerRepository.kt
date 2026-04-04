@@ -18,6 +18,8 @@ interface StickerRepository {
 
     suspend fun deleteStickerById(id: Long)
 
+    suspend fun findByStickerCode(stickerCode: String): StickerEntity?
+
     suspend fun findBaseStickerByText(
         setId: Long,
         query: String,

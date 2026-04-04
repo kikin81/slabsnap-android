@@ -22,6 +22,9 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
 
     override suspend fun deleteStickerById(id: Long) = stickerDao.deleteById(id)
 
+    override suspend fun findByStickerCode(stickerCode: String): StickerEntity? =
+        stickerDao.getByStickerCode(stickerCode)
+
     override suspend fun findBaseStickerByText(
         setId: Long,
         query: String,

@@ -315,10 +315,10 @@ class LiveScannerViewModelTest {
         val baseSticker = baseStickerEntity()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
         coEvery { cardDataExtractor.extract(frontBitmap) } returns extracted
-        coEvery { cardDataExtractor.extractBackCode(backBitmap) } returns "ARG 10"
-        coEvery { stickerRepository.findBaseStickerByText(1L, "ARG 10") } returns baseSticker
+        coEvery { cardDataExtractor.extractBackCode(backBitmap) } returns "ARG10"
+        coEvery { stickerRepository.findByStickerCode("ARG10") } returns baseSticker
         coEvery {
-            stickerRepository.insertParallelVariant("ARG 10", 1L, "Blue")
+            stickerRepository.insertParallelVariant("ARG10", 1L, "Blue")
         } returns 3L
         val viewModel = createViewModel()
 
@@ -342,7 +342,7 @@ class LiveScannerViewModelTest {
             assertEquals("Blue", result.borderColor)
         }
         coVerify { cardDataExtractor.extractBackCode(backBitmap) }
-        coVerify { stickerRepository.insertParallelVariant("ARG 10", 1L, "Blue") }
+        coVerify { stickerRepository.insertParallelVariant("ARG10", 1L, "Blue") }
     }
 
     // endregion

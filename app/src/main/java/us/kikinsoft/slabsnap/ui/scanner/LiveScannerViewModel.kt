@@ -123,7 +123,7 @@ class LiveScannerViewModel @Inject constructor(
                     borderColor = borderColor,
                 )
 
-                val sticker = stickerRepository.findBaseStickerByText(1L, stickerCode)
+                val sticker = stickerRepository.findByStickerCode(stickerCode)
                 setState {
                     copy(
                         phase = ScanPhase.ShowingResult(
