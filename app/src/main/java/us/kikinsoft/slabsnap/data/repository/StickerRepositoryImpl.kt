@@ -12,6 +12,8 @@ class StickerRepositoryImpl @Inject constructor(private val stickerDao: StickerD
     override fun getStickersBySet(collectionSetId: Long): Flow<List<StickerEntity>> =
         stickerDao.getByCollectionSet(collectionSetId)
 
+    override fun countUniqueOwned(collectionSetId: Long): Flow<Int> = stickerDao.countUniqueOwned(collectionSetId)
+
     override suspend fun addSticker(sticker: StickerEntity): Long = stickerDao.insert(sticker)
 
     override suspend fun updateSticker(sticker: StickerEntity) = stickerDao.update(sticker)

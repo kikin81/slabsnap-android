@@ -5,21 +5,33 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -36,6 +48,8 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import us.kikinsoft.slabsnap.R
 import us.kikinsoft.slabsnap.ui.theme.SlabSnapTheme
+
+private val quickAddColors = listOf("White", "Blue", "Red", "Purple", "Green", "Black")
 
 @Composable
 fun CollectionListScreen(
@@ -59,15 +73,24 @@ fun CollectionListScreen(
     CollectionListContent(
         state = state,
         onScanClick = onNavigateToScanner,
+        onSelectFilter = { viewModel.handleEvent(CollectionListEvent.SetFilter(it)) },
+        onClickQuickAdd = { viewModel.handleEvent(CollectionListEvent.OnQuickAddClicked(it)) },
+        onDismissSheet = { viewModel.handleEvent(CollectionListEvent.DismissQuickAdd) },
+        onSelectColor = { viewModel.handleEvent(CollectionListEvent.OnColorSelected(it)) },
         snackbarHostState = snackbarHostState,
         modifier = modifier,
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CollectionListContent(
     state: CollectionListState,
     onScanClick: () -> Unit,
+    onSelectFilter: (FilterMode) -> Unit,
+    onClickQuickAdd: (StickerUiModel) -> Unit,
+    onDismissSheet: () -> Unit,
+    onSelectColor: (String) -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
@@ -75,11 +98,13 @@ private fun CollectionListContent(
         modifier = modifier,
         snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
-            FloatingActionButton(onClick = onScanClick) {
+            ExtendedFloatingActionButton(onClick = onScanClick) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.collection_scan_sticker),
+                    contentDescription = null,
                 )
+                Spacer(Modifier.width(8.dp))
+                Text(stringResource(R.string.collection_scan_sticker))
             }
         },
     ) { innerPadding ->
@@ -94,35 +119,23 @@ private fun CollectionListContent(
                     CircularProgressIndicator()
                 }
             }
-            state.isEmpty -> {
-                EmptyState(modifier = Modifier.padding(innerPadding))
-            }
             else -> {
+                val filteredStickers = filterStickers(state.stickers, state.filter)
                 StickerGrid(
-                    stickers = state.stickers,
+                    stickers = filteredStickers,
+                    state = state,
+                    onSelectFilter = onSelectFilter,
+                    onClickQuickAdd = onClickQuickAdd,
                     modifier = Modifier.padding(innerPadding),
                 )
             }
         }
-    }
-}
 
-@Composable
-private fun EmptyState(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                text = stringResource(R.string.collection_empty_title),
-                style = MaterialTheme.typography.titleLarge,
-            )
-            Text(
-                text = stringResource(R.string.collection_empty_subtitle),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 8.dp),
+        if (state.selectedStickerForAdd != null) {
+            ColorPickerBottomSheet(
+                stickerCode = state.selectedStickerForAdd.stickerCode,
+                onSelectColor = onSelectColor,
+                onDismiss = onDismissSheet,
             )
         }
     }
@@ -130,23 +143,146 @@ private fun EmptyState(modifier: Modifier = Modifier) {
 
 @Composable
 private fun StickerGrid(
-    stickers: ImmutableList<StickerUiModel>,
+    stickers: List<StickerUiModel>,
+    state: CollectionListState,
+    onSelectFilter: (FilterMode) -> Unit,
+    onClickQuickAdd: (StickerUiModel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 88.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
+        item(span = { GridItemSpan(2) }) {
+            ProgressHeader(
+                ownedCount = state.uniqueOwnedCount,
+                totalCount = state.totalInSet,
+            )
+        }
+        item(span = { GridItemSpan(2) }) {
+            FilterRow(
+                selectedFilter = state.filter,
+                onSelectFilter = onSelectFilter,
+            )
+        }
         items(
             items = stickers,
             key = { it.id },
         ) { sticker ->
-            StickerCard(sticker = sticker)
+            StickerGridItem(
+                sticker = sticker,
+                onQuickAddClick = { onClickQuickAdd(sticker) },
+            )
         }
     }
+}
+
+@Composable
+private fun ProgressHeader(
+    ownedCount: Int,
+    totalCount: Int,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Bottom,
+        ) {
+            Text(
+                text = stringResource(R.string.collection_progress, ownedCount, totalCount),
+                style = MaterialTheme.typography.headlineMedium,
+            )
+            if (totalCount > 0) {
+                Text(
+                    text = "${(ownedCount * 100 / totalCount)}%",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+        Spacer(Modifier.height(8.dp))
+        LinearProgressIndicator(
+            progress = { if (totalCount > 0) ownedCount.toFloat() / totalCount else 0f },
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+@Composable
+private fun FilterRow(
+    selectedFilter: FilterMode,
+    onSelectFilter: (FilterMode) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        FilterChip(
+            selected = selectedFilter == FilterMode.ALL,
+            onClick = { onSelectFilter(FilterMode.ALL) },
+            label = { Text(stringResource(R.string.collection_filter_all)) },
+        )
+        FilterChip(
+            selected = selectedFilter == FilterMode.MISSING,
+            onClick = { onSelectFilter(FilterMode.MISSING) },
+            label = { Text(stringResource(R.string.collection_filter_missing)) },
+        )
+        FilterChip(
+            selected = selectedFilter == FilterMode.PARALLELS,
+            onClick = { onSelectFilter(FilterMode.PARALLELS) },
+            label = { Text(stringResource(R.string.collection_filter_parallels)) },
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ColorPickerBottomSheet(
+    stickerCode: String,
+    onSelectColor: (String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+        ) {
+            Text(
+                text = "$stickerCode — ${stringResource(R.string.collection_pick_color)}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Spacer(Modifier.height(16.dp))
+            quickAddColors.forEach { color ->
+                TextButton(
+                    onClick = { onSelectColor(color) },
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = color,
+                        style = MaterialTheme.typography.bodyLarge,
+                    )
+                }
+            }
+        }
+    }
+}
+
+private fun filterStickers(
+    stickers: ImmutableList<StickerUiModel>,
+    filter: FilterMode,
+): List<StickerUiModel> = when (filter) {
+    FilterMode.ALL -> stickers
+    FilterMode.MISSING -> stickers.filter { !it.isOwned }
+    FilterMode.PARALLELS -> stickers.filter { it.isOwned && it.borderColor != "White" }
 }
 
 @Preview(showBackground = true)
@@ -155,41 +291,60 @@ private fun StickerGrid(
 private fun CollectionListEmptyPreview() {
     SlabSnapTheme {
         CollectionListContent(
-            state = CollectionListState(isLoading = false),
+            state = CollectionListState(
+                stickers = persistentListOf(
+                    StickerUiModel(1L, "ARG 20", "Lionel Messi", "Argentina"),
+                    StickerUiModel(2L, "FRA 19", "Kylian Mbappé", "France"),
+                    StickerUiModel(3L, "BRA 17", "Neymar Jr", "Brazil"),
+                ),
+                isLoading = false,
+                uniqueOwnedCount = 0,
+                totalInSet = 670,
+            ),
             onScanClick = {},
+            onSelectFilter = {},
+            onClickQuickAdd = {},
+            onDismissSheet = {},
+            onSelectColor = {},
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun CollectionListPopulatedPreview() {
+private fun CollectionListWithOwnedPreview() {
     SlabSnapTheme {
         CollectionListContent(
             state = CollectionListState(
                 stickers = persistentListOf(
                     StickerUiModel(
-                        id = 1L,
-                        stickerCode = "ARG 10",
-                        playerName = "Lionel Messi",
-                        teamName = "Argentina",
+                        1L,
+                        "ARG 20",
+                        "Lionel Messi",
+                        "Argentina",
+                        isOwned = true,
+                        borderColor = "Blue",
                     ),
+                    StickerUiModel(2L, "FRA 19", "Kylian Mbappé", "France"),
                     StickerUiModel(
-                        id = 2L,
-                        stickerCode = "POR 7",
-                        playerName = "Cristiano Ronaldo",
-                        teamName = "Portugal",
+                        3L,
+                        "BRA 17",
+                        "Neymar Jr",
+                        "Brazil",
+                        isOwned = true,
+                        borderColor = "White",
                     ),
-                    StickerUiModel(
-                        id = 3L,
-                        stickerCode = "FRA 10",
-                        playerName = "Kylian Mbappe",
-                        teamName = "France",
-                    ),
+                    StickerUiModel(4L, "GER 15", "Joshua Kimmich", "Germany"),
                 ),
                 isLoading = false,
+                uniqueOwnedCount = 15,
+                totalInSet = 670,
             ),
             onScanClick = {},
+            onSelectFilter = {},
+            onClickQuickAdd = {},
+            onDismissSheet = {},
+            onSelectColor = {},
         )
     }
 }
@@ -201,6 +356,10 @@ private fun CollectionListLoadingPreview() {
         CollectionListContent(
             state = CollectionListState(),
             onScanClick = {},
+            onSelectFilter = {},
+            onClickQuickAdd = {},
+            onDismissSheet = {},
+            onSelectColor = {},
         )
     }
 }

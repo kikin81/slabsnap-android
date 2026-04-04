@@ -34,6 +34,11 @@ interface StickerDao {
         query: String,
     ): StickerEntity?
 
+    @Query(
+        "SELECT COUNT(DISTINCT stickerCode) FROM stickers WHERE isOwned = 1 AND collectionSetId = :setId",
+    )
+    fun countUniqueOwned(setId: Long): Flow<Int>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(sticker: StickerEntity): Long
 

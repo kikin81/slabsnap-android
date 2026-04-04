@@ -8,6 +8,8 @@ interface StickerRepository {
 
     fun getStickersBySet(collectionSetId: Long): Flow<List<StickerEntity>>
 
+    fun countUniqueOwned(collectionSetId: Long): Flow<Int>
+
     suspend fun addSticker(sticker: StickerEntity): Long
 
     suspend fun updateSticker(sticker: StickerEntity)
