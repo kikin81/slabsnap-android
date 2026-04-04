@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.mlkit.genai.common.FeatureStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.launch
 import us.kikinsoft.slabsnap.data.mlkit.CardDataExtractor
 import us.kikinsoft.slabsnap.domain.repository.StickerRepository
@@ -18,132 +19,109 @@ class LiveScannerViewModel @Inject constructor(
     LiveScannerState(),
 ) {
 
+    companion object {
+        private const val COLLECTION_SET_ID = 1L
+    }
+
     override fun handleEvent(event: LiveScannerEvent) {
         when (event) {
-            is LiveScannerEvent.CheckInitialPermission -> {
+            is LiveScannerEvent.CheckInitialPermission ->
                 sendEffect(LiveScannerEffect.RequestCameraPermission)
-            }
-            is LiveScannerEvent.OnPermissionResult -> {
+            is LiveScannerEvent.OnPermissionResult ->
                 setState {
                     copy(
                         hasCameraPermission = event.granted,
                         isPermissionDeniedGlobally = !event.granted,
                     )
                 }
-            }
-            is LiveScannerEvent.OnCameraError -> {
+            is LiveScannerEvent.OnCameraError ->
                 setState { copy(phase = ScanPhase.Error(event.message)) }
-            }
-            is LiveScannerEvent.OnStabilityReached -> {
-                when (val phase = uiState.value.phase) {
-                    is ScanPhase.Scanning -> extractCardData(event.bitmap)
-                    is ScanPhase.ScanningBack -> extractBackCode(event.bitmap, phase.borderColor)
-                    else -> Unit // Ignore stability events in non-scanning phases
-                }
-            }
-            is LiveScannerEvent.ScanNext -> {
-                setState { copy(phase = ScanPhase.Scanning) }
-            }
-            is LiveScannerEvent.TryAgain -> {
-                setState { copy(phase = ScanPhase.Scanning) }
-            }
-            is LiveScannerEvent.ScanBack -> {
-                val phase = uiState.value.phase
-                if (phase is ScanPhase.FlipPrompt) {
-                    setState { copy(phase = ScanPhase.ScanningBack(phase.borderColor)) }
-                }
-            }
+            is LiveScannerEvent.OnStabilityReached ->
+                onStabilityReached(event.bitmap)
+            is LiveScannerEvent.TryAgain ->
+                setState { copy(phase = ScanPhase.ScanningFront) }
         }
     }
 
-    private fun extractCardData(bitmap: Bitmap) {
-        if (uiState.value.phase !is ScanPhase.Scanning) return
+    private fun onStabilityReached(bitmap: Bitmap) {
+        when (val phase = uiState.value.phase) {
+            is ScanPhase.ScanningFront -> extractFront(bitmap)
+            is ScanPhase.FlipPrompt -> {
+                // Auto-detect: next stable frame after flip prompt = back side
+                setState { copy(phase = ScanPhase.ScanningBack(phase.front)) }
+                extractBack(bitmap, phase.front)
+            }
+            is ScanPhase.ScanningBack -> extractBack(bitmap, phase.front)
+            else -> Unit
+        }
+    }
 
-        setState { copy(phase = ScanPhase.Extracting) }
+    private fun extractFront(bitmap: Bitmap) {
+        if (uiState.value.phase !is ScanPhase.ScanningFront) return
+        setState { copy(phase = ScanPhase.ExtractingFront) }
 
         viewModelScope.launch {
             try {
                 ensureModelAvailable()
-                val data = cardDataExtractor.extract(bitmap)
-
-                if (data.primaryText == "UNKNOWN" && data.badgeText == "UNKNOWN") {
-                    setState { copy(phase = ScanPhase.FlipPrompt(data.borderColor)) }
-                    return@launch
-                }
-
-                val searchText = if (data.primaryText != "UNKNOWN") data.primaryText else data.badgeText
-                // TODO: collectionSetId should come from user selection; using 1L as placeholder
-                val baseSticker = stickerRepository.findBaseStickerByText(1L, searchText)
-
-                if (baseSticker != null) {
-                    stickerRepository.insertParallelVariant(
-                        baseStickerCode = baseSticker.stickerCode,
-                        collectionSetId = baseSticker.collectionSetId,
-                        borderColor = data.borderColor,
-                    )
-                    setState {
-                        copy(
-                            phase = ScanPhase.ShowingResult(
-                                sticker = baseSticker,
-                                borderColor = data.borderColor,
-                            ),
-                        )
-                    }
-                } else {
-                    setState { copy(phase = ScanPhase.FlipPrompt(data.borderColor)) }
-                }
+                val data = cardDataExtractor.extractFront(bitmap)
+                val front = PendingFrontData(
+                    borderColor = data.borderColor,
+                    isFoil = data.isFoil,
+                )
+                // Always transition to FlipPrompt — back scan is mandatory
+                setState { copy(phase = ScanPhase.FlipPrompt(front)) }
             } catch (e: Exception) {
                 setState {
                     copy(
                         isDownloadingModel = false,
-                        phase = ScanPhase.Error(e.message ?: "Failed to extract card data"),
+                        phase = ScanPhase.Error(
+                            e.message ?: "Failed to extract card data",
+                        ),
                     )
                 }
             }
         }
     }
 
-    private fun extractBackCode(
+    private fun extractBack(
         bitmap: Bitmap,
-        borderColor: String,
+        front: PendingFrontData,
     ) {
-        if (uiState.value.phase !is ScanPhase.ScanningBack) return
-
-        setState { copy(phase = ScanPhase.ExtractingBack(borderColor)) }
+        setState { copy(phase = ScanPhase.ExtractingBack(front)) }
 
         viewModelScope.launch {
             try {
                 ensureModelAvailable()
                 val stickerCode = cardDataExtractor.extractBackCode(bitmap)
 
-                // TODO: collectionSetId should come from user selection; using 1L as placeholder
+                setState { copy(phase = ScanPhase.Saving(front, stickerCode)) }
+
                 stickerRepository.insertParallelVariant(
                     baseStickerCode = stickerCode,
-                    collectionSetId = 1L,
-                    borderColor = borderColor,
+                    collectionSetId = COLLECTION_SET_ID,
+                    borderColor = front.borderColor,
                 )
 
                 val sticker = stickerRepository.findByStickerCode(stickerCode)
+                val scannedCard = ScannedCard(
+                    stickerCode = stickerCode,
+                    playerName = sticker?.playerName ?: stickerCode,
+                    borderColor = front.borderColor,
+                )
+
                 setState {
                     copy(
-                        phase = ScanPhase.ShowingResult(
-                            sticker = sticker ?: us.kikinsoft.slabsnap.data.local.entity.StickerEntity(
-                                stickerCode = stickerCode,
-                                playerName = stickerCode,
-                                teamName = "",
-                                metadata = emptyMap(),
-                                collectionSetId = 1L,
-                                borderColor = borderColor,
-                            ),
-                            borderColor = borderColor,
-                        ),
+                        phase = ScanPhase.ScanningFront,
+                        sessionCards = (sessionCards + scannedCard).toImmutableList(),
                     )
                 }
             } catch (e: Exception) {
                 setState {
                     copy(
                         isDownloadingModel = false,
-                        phase = ScanPhase.Error(e.message ?: "Failed to read sticker code"),
+                        phase = ScanPhase.Error(
+                            e.message ?: "Failed to read sticker code",
+                        ),
                     )
                 }
             }

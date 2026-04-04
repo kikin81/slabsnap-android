@@ -32,8 +32,8 @@ class LiveScannerViewModelTest {
     private fun createViewModel(): LiveScannerViewModel = LiveScannerViewModel(cardDataExtractor, stickerRepository)
 
     private fun baseStickerEntity(
-        stickerCode: String = "ARG 10",
-        playerName: String = "Messi",
+        stickerCode: String = "ARG20",
+        playerName: String = "Lionel Messi",
         teamName: String = "Argentina",
     ) = StickerEntity(
         id = 1L,
@@ -49,31 +49,29 @@ class LiveScannerViewModelTest {
     // region Permission & basic events
 
     @Test
-    fun `GIVEN viewModel is created THEN initial phase is Scanning`() {
+    fun `GIVEN viewModel is created THEN initial phase is ScanningFront`() {
         // Given
         val viewModel = createViewModel()
 
         // Then
-        assertFalse(viewModel.uiState.value.hasCameraPermission)
-        assertFalse(viewModel.uiState.value.isPermissionDeniedGlobally)
-        assertEquals(ScanPhase.Scanning, viewModel.uiState.value.phase)
+        assertEquals(ScanPhase.ScanningFront, viewModel.uiState.value.phase)
+        assertTrue(viewModel.uiState.value.sessionCards.isEmpty())
     }
 
     @Test
-    fun `GIVEN initial state WHEN CheckInitialPermission event THEN RequestCameraPermission effect is emitted`() =
-        runTest {
-            // Given
-            val viewModel = createViewModel()
+    fun `GIVEN initial state WHEN CheckInitialPermission THEN RequestCameraPermission effect emitted`() = runTest {
+        // Given
+        val viewModel = createViewModel()
 
-            // When / Then
-            viewModel.effects.test {
-                viewModel.handleEvent(LiveScannerEvent.CheckInitialPermission)
-                assertEquals(LiveScannerEffect.RequestCameraPermission, awaitItem())
-            }
+        // When / Then
+        viewModel.effects.test {
+            viewModel.handleEvent(LiveScannerEvent.CheckInitialPermission)
+            assertEquals(LiveScannerEffect.RequestCameraPermission, awaitItem())
         }
+    }
 
     @Test
-    fun `GIVEN permission not granted WHEN OnPermissionResult with granted true THEN state has camera permission`() {
+    fun `GIVEN permission not granted WHEN OnPermissionResult true THEN state has camera permission`() {
         // Given
         val viewModel = createViewModel()
 
@@ -82,24 +80,10 @@ class LiveScannerViewModelTest {
 
         // Then
         assertTrue(viewModel.uiState.value.hasCameraPermission)
-        assertFalse(viewModel.uiState.value.isPermissionDeniedGlobally)
     }
 
     @Test
-    fun `GIVEN permission not granted WHEN OnPermissionResult with granted false THEN state is permission denied`() {
-        // Given
-        val viewModel = createViewModel()
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.OnPermissionResult(granted = false))
-
-        // Then
-        assertFalse(viewModel.uiState.value.hasCameraPermission)
-        assertTrue(viewModel.uiState.value.isPermissionDeniedGlobally)
-    }
-
-    @Test
-    fun `GIVEN viewModel exists WHEN OnCameraError event THEN phase transitions to Error`() {
+    fun `GIVEN viewModel WHEN OnCameraError THEN phase transitions to Error`() {
         // Given
         val viewModel = createViewModel()
 
@@ -114,92 +98,32 @@ class LiveScannerViewModelTest {
 
     // endregion
 
-    // region Front-scan resolution (text match found)
+    // region Front scan → FlipPrompt (always)
 
     @Test
-    fun `GIVEN model available WHEN OnStabilityReached THEN phase transitions to Extracting`() {
+    fun `GIVEN ScanningFront WHEN OnStabilityReached THEN transitions to ExtractingFront`() {
         // Given
         val bitmap = mockk<Bitmap>()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } coAnswers {
+        coEvery { cardDataExtractor.extractFront(bitmap) } coAnswers {
             kotlinx.coroutines.delay(1000)
-            ExtractedCardData("Messi", "Argentina", "White", false)
+            ExtractedCardData("White", false)
         }
-        coEvery { stickerRepository.findBaseStickerByText(any(), any()) } returns null
         val viewModel = createViewModel()
 
         // When
         viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
 
         // Then
-        assertEquals(ScanPhase.Extracting, viewModel.uiState.value.phase)
+        assertEquals(ScanPhase.ExtractingFront, viewModel.uiState.value.phase)
     }
 
     @Test
-    fun `GIVEN front scan matches a base sticker WHEN OnStabilityReached THEN phase is ShowingResult`() = runTest {
+    fun `GIVEN front extraction succeeds WHEN OnStabilityReached THEN always transitions to FlipPrompt`() = runTest {
         // Given
         val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Messi", "UNKNOWN", "Blue", false)
-        val baseSticker = baseStickerEntity()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Messi") } returns baseSticker
-        coEvery {
-            stickerRepository.insertParallelVariant("ARG 10", 1L, "Blue")
-        } returns 2L
-        val viewModel = createViewModel()
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-
-        // Then — wait for coroutine to complete
-        viewModel.uiState.test {
-            val state = awaitItem()
-            val phase = state.phase
-            assertTrue(phase is ScanPhase.ShowingResult)
-            val result = phase as ScanPhase.ShowingResult
-            assertEquals("Messi", result.sticker.playerName)
-            assertEquals("ARG 10", result.sticker.stickerCode)
-            assertEquals("Blue", result.borderColor)
-        }
-    }
-
-    @Test
-    fun `GIVEN front scan matches WHEN resolution succeeds THEN parallel variant is persisted`() = runTest {
-        // Given
-        val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Messi", "UNKNOWN", "Red", false)
-        val baseSticker = baseStickerEntity()
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Messi") } returns baseSticker
-        coEvery {
-            stickerRepository.insertParallelVariant("ARG 10", 1L, "Red")
-        } returns 2L
-        val viewModel = createViewModel()
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-
-        // Then — wait for the state to settle
-        viewModel.uiState.test {
-            awaitItem() // ShowingResult
-        }
-        coVerify { stickerRepository.insertParallelVariant("ARG 10", 1L, "Red") }
-    }
-
-    // endregion
-
-    // region Front-scan → back-scan fallback (no text match)
-
-    @Test
-    fun `GIVEN front scan has no text match WHEN OnStabilityReached THEN phase transitions to FlipPrompt`() = runTest {
-        // Given
-        val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Messi", "UNKNOWN", "Purple", false)
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Messi") } returns null
+        coEvery { cardDataExtractor.extractFront(bitmap) } returns ExtractedCardData("Blue", false)
         val viewModel = createViewModel()
 
         // When
@@ -209,17 +133,18 @@ class LiveScannerViewModelTest {
         viewModel.uiState.test {
             val phase = awaitItem().phase
             assertTrue(phase is ScanPhase.FlipPrompt)
-            assertEquals("Purple", (phase as ScanPhase.FlipPrompt).borderColor)
+            val front = (phase as ScanPhase.FlipPrompt).front
+            assertEquals("Blue", front.borderColor)
+            assertFalse(front.isFoil)
         }
     }
 
     @Test
-    fun `GIVEN front scan returns all UNKNOWN text WHEN OnStabilityReached THEN transitions to FlipPrompt`() = runTest {
-        // Given — foil card with no readable text
+    fun `GIVEN foil card WHEN front extracted THEN FlipPrompt carries isFoil true`() = runTest {
+        // Given
         val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("UNKNOWN", "UNKNOWN", "Green", true)
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
+        coEvery { cardDataExtractor.extractFront(bitmap) } returns ExtractedCardData("White", true)
         val viewModel = createViewModel()
 
         // When
@@ -229,132 +154,98 @@ class LiveScannerViewModelTest {
         viewModel.uiState.test {
             val phase = awaitItem().phase
             assertTrue(phase is ScanPhase.FlipPrompt)
-            assertEquals("Green", (phase as ScanPhase.FlipPrompt).borderColor)
+            assertTrue((phase as ScanPhase.FlipPrompt).front.isFoil)
         }
     }
 
     // endregion
 
-    // region User action events
+    // region FlipPrompt → auto-detect → back scan → save
 
     @Test
-    fun `GIVEN phase is FlipPrompt WHEN ScanBack event THEN phase transitions to ScanningBack`() {
-        // Given
-        val viewModel = createViewModel()
-        val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("UNKNOWN", "UNKNOWN", "Blue", true)
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.ScanBack)
-
-        // Then
-        val phase = viewModel.uiState.value.phase
-        assertTrue(phase is ScanPhase.ScanningBack)
-        assertEquals("Blue", (phase as ScanPhase.ScanningBack).borderColor)
-    }
-
-    @Test
-    fun `GIVEN phase is ShowingResult WHEN ScanNext event THEN phase resets to Scanning`() = runTest {
-        // Given
-        val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Messi", "UNKNOWN", "White", false)
-        val baseSticker = baseStickerEntity()
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Messi") } returns baseSticker
-        coEvery { stickerRepository.insertParallelVariant("ARG 10", 1L, "White") } returns 2L
-        val viewModel = createViewModel()
-
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-        viewModel.uiState.test {
-            awaitItem() // ShowingResult
-        }
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.ScanNext)
-
-        // Then
-        assertEquals(ScanPhase.Scanning, viewModel.uiState.value.phase)
-    }
-
-    @Test
-    fun `GIVEN phase is Error WHEN TryAgain event THEN phase resets to Scanning`() = runTest {
-        // Given
-        val bitmap = mockk<Bitmap>()
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } throws RuntimeException("AI inference failed")
-        val viewModel = createViewModel()
-
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-        viewModel.uiState.test {
-            val phase = awaitItem().phase
-            assertTrue(phase is ScanPhase.Error)
-        }
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.TryAgain)
-
-        // Then
-        assertEquals(ScanPhase.Scanning, viewModel.uiState.value.phase)
-    }
-
-    // endregion
-
-    // region Back-scan resolution
-
-    @Test
-    fun `GIVEN in ScanningBack phase WHEN OnStabilityReached THEN extracts back code and shows result`() = runTest {
-        // Given — simulate front scan that transitioned to FlipPrompt, then ScanBack
+    fun `GIVEN FlipPrompt WHEN OnStabilityReached THEN extracts back code and saves`() = runTest {
+        // Given — front scan completed
         val frontBitmap = mockk<Bitmap>()
         val backBitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("UNKNOWN", "UNKNOWN", "Blue", true)
         val baseSticker = baseStickerEntity()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(frontBitmap) } returns extracted
-        coEvery { cardDataExtractor.extractBackCode(backBitmap) } returns "ARG10"
-        coEvery { stickerRepository.findByStickerCode("ARG10") } returns baseSticker
-        coEvery {
-            stickerRepository.insertParallelVariant("ARG10", 1L, "Blue")
-        } returns 3L
+        coEvery { cardDataExtractor.extractFront(frontBitmap) } returns ExtractedCardData("Blue", false)
+        coEvery { cardDataExtractor.extractBackCode(backBitmap) } returns "ARG20"
+        coEvery { stickerRepository.findByStickerCode("ARG20") } returns baseSticker
+        coEvery { stickerRepository.insertParallelVariant("ARG20", 1L, "Blue") } returns 2L
         val viewModel = createViewModel()
 
         // Front scan → FlipPrompt
         viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(frontBitmap))
         viewModel.uiState.test { awaitItem() } // FlipPrompt
 
-        // User taps "Scan Back" → ScanningBack
-        viewModel.handleEvent(LiveScannerEvent.ScanBack)
-        assertEquals(ScanPhase.ScanningBack("Blue"), viewModel.uiState.value.phase)
-
-        // When — back scan
+        // When — auto-detect flip: next stable frame
         viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(backBitmap))
+
+        // Then — saves and auto-resumes
+        viewModel.uiState.test {
+            val state = awaitItem()
+            assertEquals(ScanPhase.ScanningFront, state.phase)
+            assertEquals(1, state.sessionCards.size)
+            assertEquals("ARG20", state.sessionCards[0].stickerCode)
+            assertEquals("Lionel Messi", state.sessionCards[0].playerName)
+            assertEquals("Blue", state.sessionCards[0].borderColor)
+        }
+        coVerify { stickerRepository.insertParallelVariant("ARG20", 1L, "Blue") }
+    }
+
+    @Test
+    fun `GIVEN full dual scan WHEN completed THEN session counter increments`() = runTest {
+        // Given
+        val frontBitmap1 = mockk<Bitmap>()
+        val backBitmap1 = mockk<Bitmap>()
+        val frontBitmap2 = mockk<Bitmap>()
+        val backBitmap2 = mockk<Bitmap>()
+        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
+        coEvery { cardDataExtractor.extractFront(frontBitmap1) } returns ExtractedCardData("Blue", false)
+        coEvery { cardDataExtractor.extractBackCode(backBitmap1) } returns "ARG20"
+        coEvery { stickerRepository.findByStickerCode("ARG20") } returns baseStickerEntity()
+        coEvery { stickerRepository.insertParallelVariant("ARG20", 1L, "Blue") } returns 2L
+        coEvery { cardDataExtractor.extractFront(frontBitmap2) } returns ExtractedCardData("White", false)
+        coEvery { cardDataExtractor.extractBackCode(backBitmap2) } returns "FRA19"
+        coEvery { stickerRepository.findByStickerCode("FRA19") } returns baseStickerEntity(
+            stickerCode = "FRA19",
+            playerName = "Kylian Mbappé",
+            teamName = "France",
+        )
+        coEvery { stickerRepository.insertParallelVariant("FRA19", 1L, "White") } returns 3L
+        val viewModel = createViewModel()
+
+        // First card
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(frontBitmap1))
+        viewModel.uiState.test { awaitItem() }
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(backBitmap1))
+        viewModel.uiState.test { awaitItem() }
+
+        // Second card
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(frontBitmap2))
+        viewModel.uiState.test { awaitItem() }
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(backBitmap2))
 
         // Then
         viewModel.uiState.test {
-            val phase = awaitItem().phase
-            assertTrue(phase is ScanPhase.ShowingResult)
-            val result = phase as ScanPhase.ShowingResult
-            assertEquals("ARG 10", result.sticker.stickerCode)
-            assertEquals("Blue", result.borderColor)
+            val state = awaitItem()
+            assertEquals(2, state.sessionCards.size)
+            assertEquals("ARG20", state.sessionCards[0].stickerCode)
+            assertEquals("FRA19", state.sessionCards[1].stickerCode)
         }
-        coVerify { cardDataExtractor.extractBackCode(backBitmap) }
-        coVerify { stickerRepository.insertParallelVariant("ARG10", 1L, "Blue") }
     }
 
     // endregion
 
-    // region Model availability
+    // region Error handling
 
     @Test
-    fun `GIVEN model available WHEN extraction fails THEN phase transitions to Error`() = runTest {
+    fun `GIVEN front extraction fails WHEN OnStabilityReached THEN phase is Error`() = runTest {
         // Given
         val bitmap = mockk<Bitmap>()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } throws RuntimeException("AI inference failed")
+        coEvery { cardDataExtractor.extractFront(bitmap) } throws RuntimeException("AI inference failed")
         val viewModel = createViewModel()
 
         // When
@@ -369,22 +260,56 @@ class LiveScannerViewModelTest {
     }
 
     @Test
-    fun `GIVEN model downloadable WHEN OnStabilityReached THEN downloads model then extracts`() = runTest {
+    fun `GIVEN back extraction fails WHEN scanning back THEN phase is Error`() = runTest {
+        // Given
+        val frontBitmap = mockk<Bitmap>()
+        val backBitmap = mockk<Bitmap>()
+        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
+        coEvery { cardDataExtractor.extractFront(frontBitmap) } returns ExtractedCardData("White", false)
+        coEvery { cardDataExtractor.extractBackCode(backBitmap) } throws RuntimeException("Can't read code")
+        val viewModel = createViewModel()
+
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(frontBitmap))
+        viewModel.uiState.test { awaitItem() }
+
+        // When
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(backBitmap))
+
+        // Then
+        viewModel.uiState.test {
+            val phase = awaitItem().phase
+            assertTrue(phase is ScanPhase.Error)
+            assertEquals("Can't read code", (phase as ScanPhase.Error).message)
+        }
+    }
+
+    @Test
+    fun `GIVEN Error phase WHEN TryAgain THEN resets to ScanningFront`() {
         // Given
         val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Mbappe", "France", "White", false)
-        val baseSticker = baseStickerEntity(
-            stickerCode = "FRA 07",
-            playerName = "Mbappe",
-            teamName = "France",
-        )
+        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
+        coEvery { cardDataExtractor.extractFront(bitmap) } throws RuntimeException("fail")
+        val viewModel = createViewModel()
+        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
+
+        // When
+        viewModel.handleEvent(LiveScannerEvent.TryAgain)
+
+        // Then
+        assertEquals(ScanPhase.ScanningFront, viewModel.uiState.value.phase)
+    }
+
+    // endregion
+
+    // region Model availability
+
+    @Test
+    fun `GIVEN model downloadable WHEN scanning THEN downloads then extracts`() = runTest {
+        // Given
+        val bitmap = mockk<Bitmap>()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.DOWNLOADABLE
         coEvery { cardDataExtractor.downloadModel() } returns Unit
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Mbappe") } returns baseSticker
-        coEvery {
-            stickerRepository.insertParallelVariant("FRA 07", 1L, "White")
-        } returns 2L
+        coEvery { cardDataExtractor.extractFront(bitmap) } returns ExtractedCardData("White", false)
         val viewModel = createViewModel()
 
         // When
@@ -393,13 +318,13 @@ class LiveScannerViewModelTest {
         // Then
         viewModel.uiState.test {
             val phase = awaitItem().phase
-            assertTrue(phase is ScanPhase.ShowingResult)
+            assertTrue(phase is ScanPhase.FlipPrompt)
         }
         coVerify { cardDataExtractor.downloadModel() }
     }
 
     @Test
-    fun `GIVEN model unavailable WHEN OnStabilityReached THEN phase transitions to Error`() = runTest {
+    fun `GIVEN model unavailable WHEN scanning THEN phase transitions to Error`() = runTest {
         // Given
         val bitmap = mockk<Bitmap>()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.UNAVAILABLE
@@ -419,89 +344,28 @@ class LiveScannerViewModelTest {
         }
     }
 
-    @Test
-    fun `GIVEN model downloading WHEN OnStabilityReached THEN downloads then extracts`() = runTest {
-        // Given
-        val bitmap = mockk<Bitmap>()
-        val extracted = ExtractedCardData("Salah", "Egypt", "White", false)
-        val baseSticker = baseStickerEntity(
-            stickerCode = "EGY 10",
-            playerName = "Salah",
-            teamName = "Egypt",
-        )
-        coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.DOWNLOADING
-        coEvery { cardDataExtractor.downloadModel() } returns Unit
-        coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-        coEvery { stickerRepository.findBaseStickerByText(1L, "Salah") } returns baseSticker
-        coEvery {
-            stickerRepository.insertParallelVariant("EGY 10", 1L, "White")
-        } returns 2L
-        val viewModel = createViewModel()
-
-        // When
-        viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-
-        // Then
-        viewModel.uiState.test {
-            val phase = awaitItem().phase
-            assertTrue(phase is ScanPhase.ShowingResult)
-        }
-        coVerify { cardDataExtractor.downloadModel() }
-    }
-
     // endregion
 
     // region Duplicate extraction guard
 
     @Test
-    fun `GIVEN already extracting WHEN OnStabilityReached again THEN second extraction is ignored`() = runTest {
+    fun `GIVEN already extracting WHEN OnStabilityReached again THEN ignored`() = runTest {
         // Given
         val bitmap = mockk<Bitmap>()
         coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-        coEvery { cardDataExtractor.extract(bitmap) } coAnswers {
+        coEvery { cardDataExtractor.extractFront(bitmap) } coAnswers {
             kotlinx.coroutines.delay(1000)
-            ExtractedCardData("Messi", "Argentina", "White", false)
+            ExtractedCardData("White", false)
         }
-        coEvery { stickerRepository.findBaseStickerByText(any(), any()) } returns null
         val viewModel = createViewModel()
 
-        // When — fire stability twice rapidly
+        // When — fire twice rapidly
         viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
         viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
 
-        // Then — extract should only be called once (second event ignored because phase is Extracting)
-        coVerify(exactly = 1) { cardDataExtractor.extract(bitmap) }
+        // Then — only one extraction
+        coVerify(exactly = 1) { cardDataExtractor.extractFront(bitmap) }
     }
-
-    // endregion
-
-    // region Badge text fallback
-
-    @Test
-    fun `GIVEN primaryText is UNKNOWN but badgeText is available WHEN front scan THEN uses badgeText for lookup`() =
-        runTest {
-            // Given
-            val bitmap = mockk<Bitmap>()
-            val extracted = ExtractedCardData("UNKNOWN", "Argentina", "White", false)
-            val baseSticker = baseStickerEntity()
-            coEvery { cardDataExtractor.checkAvailability() } returns FeatureStatus.AVAILABLE
-            coEvery { cardDataExtractor.extract(bitmap) } returns extracted
-            coEvery { stickerRepository.findBaseStickerByText(1L, "Argentina") } returns baseSticker
-            coEvery {
-                stickerRepository.insertParallelVariant("ARG 10", 1L, "White")
-            } returns 2L
-            val viewModel = createViewModel()
-
-            // When
-            viewModel.handleEvent(LiveScannerEvent.OnStabilityReached(bitmap))
-
-            // Then
-            viewModel.uiState.test {
-                val phase = awaitItem().phase
-                assertTrue(phase is ScanPhase.ShowingResult)
-            }
-            coVerify { stickerRepository.findBaseStickerByText(1L, "Argentina") }
-        }
 
     // endregion
 }
